@@ -164,10 +164,14 @@ export type Accessory =
   | 'wrinkles'
   | 'necklace';
 
+export type OutfitStyle =
+  'tunic' | 'robe' | 'armor' | 'apron' | 'vest' | 'coat' | 'suit' | 'shawl' | 'bark';
+
 export interface PortraitSpec {
   species: Species;
   skin: string;
   outfit: string;
+  outfitStyle?: OutfitStyle;
   outfitAccent?: string;
   hair?: string;
   hairStyle?: HairStyle;

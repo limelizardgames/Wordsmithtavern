@@ -1,0 +1,176 @@
+/* ── Design tokens ─────────────────────────────────────────────────────── */
+:root {
+  --ink: #2a1a10;
+  --ink-soft: #5a4030;
+  --wood-950: #140c07;
+  --wood-900: #1d120b;
+  --wood-800: #2b1a10;
+  --wood-700: #3d2616;
+  --wood-600: #573720;
+  --wood-500: #7a4b2a;
+  --wood-400: #a0673a;
+  --wood-300: #c48a55;
+  --parchment: #f7e8c4;
+  --parchment-2: #eed9a8;
+  --parchment-3: #dcc084;
+  --parchment-edge: #b8925a;
+  --gold: #f2b134;
+  --gold-2: #ffd36b;
+  --gold-3: #c98a1b;
+  --ember: #e8743b;
+  --green: #4f8a35;
+  --green-2: #7fb85a;
+  --red: #b8432f;
+  --red-2: #e0664f;
+  --blue: #3f6fb0;
+  --plum: #6b3b8c;
+  --text-light: #fff4dc;
+  --text-dim: #d8c3a0;
+
+  --font-logo: 'Uncial Antiqua', 'Palatino Linotype', Georgia, serif;
+  --font-display: 'Almendra', 'Palatino Linotype', Georgia, serif;
+  --font-ui: 'Fredoka', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-s: 8px;
+  --radius: 14px;
+  --radius-l: 22px;
+  --shadow-1: 0 2px 0 rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.25);
+  --shadow-2: 0 4px 0 rgba(0, 0, 0, 0.3), 0 10px 26px rgba(0, 0, 0, 0.4);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  /* Height of the ad banner, when one is showing (set from the ad service). */
+  --banner-h: 0px;
+
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  background: var(--wood-900);
+}
+
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: radial-gradient(
+    120% 80% at 50% 0%,
+    #3a2414 0%,
+    var(--wood-900) 55%,
+    var(--wood-950) 100%
+  );
+  color: var(--text-light);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.35;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold-2);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+svg {
+  display: block;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* The whole game lives in one full-height column that respects notches and home bars. */
+.app {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: var(--safe-top) var(--safe-right) 0 var(--safe-left);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.gallery-scene {
+  width: 396px;
+  height: 264px;
+  border-radius: 8px;
+}
+
+.gallery-barley {
+  width: 64px;
+  height: 72px;
+}
+
+.app {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+}
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

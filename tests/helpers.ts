@@ -21,7 +21,9 @@ export function loadTestDictionary(): Dictionary {
 /** A tiny hand-made dictionary for precise order tests. */
 export function tinyDictionary(): Dictionary {
   return new Dictionary({
-    core: ['ate', 'eat', 'tea', 'seat', 'east', 'eats', 'teas', 'sate', 'seta', 'tase', 'set'].join('\n'),
+    core: ['ate', 'eat', 'tea', 'seat', 'east', 'eats', 'teas', 'sate', 'seta', 'tase', 'set'].join(
+      '\n',
+    ),
     common: ['sat', 'tas', 'eta'].join('\n'),
     extra: ['ates', 'etas'].join('\n'),
     roots: JSON.stringify({ '4': ['seat'] }),

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Wordsmith Tavern</string>
+    <string name="title_activity_main">Wordsmith Tavern</string>
+    <string name="package_name">com.limelizardgames.wordsmithtavern</string>
+    <string name="custom_url_scheme">com.limelizardgames.wordsmithtavern</string>
+    <!-- Google's sample AdMob app id: always serves test ads. Replace with your app id from the
+         AdMob console before publishing. -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+</resources>

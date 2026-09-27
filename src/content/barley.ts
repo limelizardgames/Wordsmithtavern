@@ -9,8 +9,12 @@ export const BARLEY = {
 
   intro: [
     b('Oi! Down here. The tankard. Yes, the talking one.', 'surprised'),
-    b('You must be the new Wordsmith. Old Auntie Verba left you her tavern. And me. Congratulations on both.'),
-    b('In Quillhaven, cooking is word magic. Guests hand over letters, you forge them into words, and the words become food.'),
+    b(
+      'You must be the new Wordsmith. Old Auntie Verba left you her tavern. And me. Congratulations on both.',
+    ),
+    b(
+      'In Quillhaven, cooking is word magic. Guests hand over letters, you forge them into words, and the words become food.',
+    ),
     b('Don’t ask me how it works. I’m a mug.'),
     b('Here comes your first guest. Try not to poison anyone.', 'happy'),
   ] as DialogueLine[],
@@ -18,9 +22,13 @@ export const BARLEY = {
   /** Shown once, after the first night. */
   afterFirstNight: [
     b('Not bad for a first night! Only mildly chaotic.', 'happy'),
-    b('Spend coins in the Shop on furniture. Nice furniture means bigger tips, more patience, and new kinds of guests.'),
+    b(
+      'Spend coins in the Shop on furniture. Nice furniture means bigger tips, more patience, and new kinds of guests.',
+    ),
     b('The Recipe Book has new dishes. Fancier food, bigger letter sets, better pay.'),
-    b('And the Guest Book keeps track of our regulars and their... stories. Oh, they have stories.'),
+    b(
+      'And the Guest Book keeps track of our regulars and their... stories. Oh, they have stories.',
+    ),
   ] as DialogueLine[],
 
   /** Coaching during the very first order. */
@@ -29,7 +37,8 @@ export const BARLEY = {
     slots: 'Each word becomes an ingredient. Fill every slot on the order to serve it!',
     allLetters: 'The ✨ secret ingredient needs a word that uses EVERY letter.',
     bonus: 'Extra words go in the tip jar. Guests love a show-off.',
-    patience: 'That’s their patience. Serve quickly for bigger tips. Don’t worry, nobody storms out.',
+    patience:
+      'That’s their patience. Serve quickly for bigger tips. Don’t worry, nobody storms out.',
     stuck: 'Stuck? Shuffle the letters, or use a Taste Test to reveal a letter.',
   },
 
@@ -60,7 +69,11 @@ export const BARLEY = {
   ],
   repeat: ['Already in the pot!', 'You’ve served that one.', 'Déjà vu!'],
   tooShort: ['Three letters at least. Even “ale” manages three.', 'Too short!'],
-  lowPatience: ['Psst. They’re getting peckish.', 'Faster, or they’ll start eating the furniture.', 'Tick tock, Wordsmith.'],
+  lowPatience: [
+    'Psst. They’re getting peckish.',
+    'Faster, or they’ll start eating the furniture.',
+    'Tick tock, Wordsmith.',
+  ],
 
   levelUp: [
     'The tavern’s fame grows! Soon they’ll write songs about us. Barnaby already has. They’re terrible.',

@@ -174,7 +174,8 @@ export const FURNITURE: FurnitureDef[] = [
     id: 'ships-wheel',
     slot: 'wallLeft',
     name: 'Captain’s Ship Wheel',
-    blurb: 'From Captain Brinebottom’s old ship. Turning it does nothing. Everyone turns it anyway.',
+    blurb:
+      'From Captain Brinebottom’s old ship. Turning it does nothing. Everyone turns it anyway.',
     price: 0,
     unlockLevel: 1,
     bonus: { tipPct: 10, patiencePct: 10 },
@@ -304,7 +305,8 @@ export const FURNITURE: FurnitureDef[] = [
     id: 'hatchling-nest',
     slot: 'hearthside',
     name: 'Hatchling’s Nest',
-    blurb: 'Pip swore it was a potato. It was not a potato. She likes warm places and shiny things.',
+    blurb:
+      'Pip swore it was a potato. It was not a potato. She likes warm places and shiny things.',
     price: 0,
     unlockLevel: 1,
     bonus: { xpPct: 15 },

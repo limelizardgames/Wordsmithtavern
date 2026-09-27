@@ -20,7 +20,16 @@ import { createNewSave, type SaveData } from '../src/game/save';
 import { buyFurniture } from '../src/game/shop';
 
 const guest = (id: string) => CONTENT.guests.get(id)!;
-const fullPayout: Payout = { base: 12, tip: 6, favorite: 0, bonusWords: 1, total: 19, xp: 16, stars: 5, complete: true };
+const fullPayout: Payout = {
+  base: 12,
+  tip: 6,
+  favorite: 0,
+  bonusWords: 1,
+  total: 19,
+  xp: 16,
+  stars: 5,
+  complete: true,
+};
 const earlyPayout: Payout = { ...fullPayout, total: 3, tip: 0, xp: 2, stars: 1, complete: false };
 const words = { found: ['ale', 'tale'], bonus: ['lea'], hintsUsed: 0, root: 'later' };
 
@@ -75,7 +84,13 @@ describe('planNight', () => {
   it('eventually tells every story to the end', () => {
     let save = createNewSave(CONTENT.newGame);
     save = { ...save, xp: xpForLevel(12), coins: 100_000 };
-    for (const id of ['notice-board', 'potted-fern', 'crystal-ball', 'ship-bottle', 'brass-register']) {
+    for (const id of [
+      'notice-board',
+      'potted-fern',
+      'crystal-ball',
+      'ship-bottle',
+      'brass-register',
+    ]) {
       save = buyFurniture(save, CONTENT.furniture.get(id)!);
     }
     save = playNights(save, 80);
@@ -99,7 +114,12 @@ describe('serving', () => {
     expect(out.chapterCompleted?.title).toBe('A Bard Arrives');
     expect(out.reward?.coins).toBe(30);
     expect(out.save.coins).toBe(coins + fullPayout.total + 30);
-    expect(out.save.guests.barnaby).toMatchObject({ chapter: 1, friendship: 1, visits: 1, lastChapterDay: 1 });
+    expect(out.save.guests.barnaby).toMatchObject({
+      chapter: 1,
+      friendship: 1,
+      visits: 1,
+      lastChapterDay: 1,
+    });
     expect(out.save.shift!.index).toBe(1);
     expect(out.result.review.length).toBeGreaterThan(0);
     expect(out.save.recentRoots).toContain('later');
@@ -119,7 +139,8 @@ describe('serving', () => {
   it('totals and doubles the night once', () => {
     let save = createNewSave(CONTENT.newGame);
     save = startShift(save, planNight(save, CONTENT, NO_BONUSES, createRng(1)));
-    for (let i = 0; i < 3; i++) save = serveOrder(save, CONTENT, fullPayout, words, createRng(i)).save;
+    for (let i = 0; i < 3; i++)
+      save = serveOrder(save, CONTENT, fullPayout, words, createRng(i)).save;
     const totals = nightTotals(save.shift!);
     expect(totals).toMatchObject({ orders: 3, complete: 3, coins: 57, tips: 18, averageStars: 5 });
     const before = save.coins;

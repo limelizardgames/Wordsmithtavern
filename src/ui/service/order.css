@@ -1,0 +1,258 @@
+.order {
+  --box: clamp(16px, 4vw, 24px);
+  margin: 0 10px;
+  padding: 0 10px 10px;
+  border-radius: 18px;
+  overflow: visible;
+  transition: filter 0.3s ease;
+}
+
+.order.is-served {
+  filter: saturate(1.15) brightness(1.04);
+}
+
+.order-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  min-width: 0;
+}
+
+.order-head .icon {
+  flex: none;
+}
+
+.order-head .tag {
+  flex: none;
+}
+
+.order-name {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.1;
+  color: #5a2a14;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.order-slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 8px;
+  margin-top: 8px;
+}
+
+.order-early {
+  position: absolute;
+  right: 12px;
+  bottom: -13px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: #3d2616;
+  border: 2px solid #1d120b;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px 3px 3px;
+  border-radius: 12px;
+  background: rgba(107, 66, 38, 0.1);
+  border: 2px dashed rgba(107, 66, 38, 0.45);
+}
+
+.slot.is-all {
+  background: rgba(242, 177, 52, 0.16);
+  border: 2px solid #d99a2b;
+  box-shadow: inset 0 0 10px rgba(255, 211, 107, 0.45);
+}
+
+.slot.is-filled {
+  background: rgba(79, 138, 53, 0.16);
+  border: 2px solid rgba(79, 138, 53, 0.65);
+}
+
+.slot.is-flash {
+  animation: slot-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1);
+}
+
+@keyframes slot-pop {
+  0% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+}
+
+.slot-icon {
+  position: relative;
+  flex: none;
+}
+
+.slot-check {
+  position: absolute;
+  right: -4px;
+  bottom: -3px;
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  border: 1.5px solid var(--ink);
+}
+
+.slot-name {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+}
+
+.slot-boxes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.slot-box {
+  width: var(--box);
+  height: var(--box);
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(107, 66, 38, 0.5);
+  font-weight: 700;
+  font-size: calc(var(--box) * 0.62);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.slot.is-filled .slot-box {
+  background: #fff8e0;
+  border-color: rgba(79, 138, 53, 0.7);
+}
+
+.slot.is-hinted .slot-box.has-letter {
+  background: #fff1c2;
+  color: #8a5a0e;
+}
+
+.slot-plus {
+  font-weight: 700;
+  color: rgba(107, 66, 38, 0.6);
+  font-size: 14px;
+  margin-left: 1px;
+}
+
+.patience {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 -2px;
+  padding-top: 8px;
+}
+
+.patience.is-relaxed {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.patience-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.patience-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition:
+    width 0.3s linear,
+    background 0.4s ease;
+}
+
+.patience.is-good .patience-fill {
+  background: linear-gradient(180deg, #9fd06a, #5d9a3a);
+}
+
+.patience.is-warn .patience-fill {
+  background: linear-gradient(180deg, #ffd36b, #e59f22);
+}
+
+.patience.is-bad .patience-fill {
+  background: linear-gradient(180deg, #f08a6a, #c0392b);
+}
+
+.patience.is-bad .icon {
+  animation: patience-pulse 1s ease-in-out infinite;
+}
+
+@keyframes patience-pulse {
+  50% {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 380px) {
+  .order {
+    --box: 15px;
+  }
+
+  .slot {
+    padding: 2px 5px 2px 2px;
+  }
+
+  .slot-icon .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .slot-name {
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .order {
+    --box: 14px;
+  }
+
+  .order-slots {
+    gap: 4px 5px;
+  }
+}
+
+/* Short phones: drop the ingredient captions so the room keeps some height. */
+@media (max-height: 700px) {
+  .slot-name {
+    display: none;
+  }
+
+  .order-slots {
+    margin-top: 6px;
+  }
+}

@@ -107,7 +107,10 @@ export function submitWord(
   const found = [...order.found, word];
   const slotIndex = chooseSlot(order, word);
   if (slotIndex < 0) {
-    return { order: { ...order, found, bonus: [...order.bonus, word] }, outcome: { kind: 'bonus' } };
+    return {
+      order: { ...order, found, bonus: [...order.bonus, word] },
+      outcome: { kind: 'bonus' },
+    };
   }
 
   const slots = order.slots.map((slot, i) => {
@@ -146,7 +149,12 @@ export function hintTargetSlot(order: Order): number {
   return best;
 }
 
-function pickHintWord(order: Order, slot: SlotState, dict: Dictionary, rng: Rng): string | undefined {
+function pickHintWord(
+  order: Order,
+  slot: SlotState,
+  dict: Dictionary,
+  rng: Rng,
+): string | undefined {
   const n = order.letters.length;
   const taken = new Set([...order.found, ...order.slots.map((s) => s.hint).filter(Boolean)]);
   const candidates = order.familiar.filter(
@@ -197,7 +205,9 @@ export function tickPatience(order: Order, seconds: number): Order {
 }
 
 export function patienceFraction(order: Order): number {
-  return order.patienceMax > 0 ? Math.max(0, Math.min(1, order.patienceLeft / order.patienceMax)) : 0;
+  return order.patienceMax > 0
+    ? Math.max(0, Math.min(1, order.patienceLeft / order.patienceMax))
+    : 0;
 }
 
 /** Rewarded "a song from the bard" boost: tops patience back up to at least 75%. */

@@ -35,7 +35,18 @@ const COMMON_VARIANTS = ['english', 'american'];
 const ROOT_MIN_SUBWORDS = { 5: [7, 5], 6: [12, 8], 7: [16, 10], 8: [20, 12] };
 
 /** Interjections without vowels that are fine to accept. Other vowel-less entries are abbreviations. */
-const VOWELLESS_OK = new Set(['brr', 'hmm', 'shh', 'psst', 'nth', 'cwm', 'crwth', 'tsk', 'pfft', 'zzz']);
+const VOWELLESS_OK = new Set([
+  'brr',
+  'hmm',
+  'shh',
+  'psst',
+  'nth',
+  'cwm',
+  'crwth',
+  'tsk',
+  'pfft',
+  'zzz',
+]);
 
 const rot13 = (s) =>
   s.replace(/[a-z]/g, (c) => String.fromCharCode(((c.charCodeAt(0) - 97 + 13) % 26) + 97));
@@ -61,7 +72,9 @@ function collect(variants, levels) {
 }
 
 function loadFilter() {
-  const filter = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'word-filter.json'), 'utf8'));
+  const filter = JSON.parse(
+    fs.readFileSync(path.join(ROOT, 'scripts', 'word-filter.json'), 'utf8'),
+  );
   const soft = new Set(filter.soft.map(rot13));
   const block = new Set(filter.block.map(rot13));
   // Anything on the community list that we didn't explicitly soften is blocked outright.
@@ -147,7 +160,8 @@ function main() {
   }
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  const write = (name, words) => fs.writeFileSync(path.join(OUT_DIR, name), words.join('\n') + '\n');
+  const write = (name, words) =>
+    fs.writeFileSync(path.join(OUT_DIR, name), words.join('\n') + '\n');
   write('words-core.txt', core);
   write('words-common.txt', common);
   write('words-extra.txt', extra);

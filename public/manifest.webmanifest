@@ -1,0 +1,14 @@
+{
+  "name": "Wordsmith Tavern",
+  "short_name": "Wordsmith",
+  "description": "Run a fantasy tavern where cooking is word magic.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "background_color": "#1d120b",
+  "theme_color": "#1d120b",
+  "icons": [
+    { "src": "icons/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "icons/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }
+  ]
+}

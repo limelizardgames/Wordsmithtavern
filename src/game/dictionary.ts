@@ -89,7 +89,9 @@ export class Dictionary {
 }
 
 /** Loads the dictionary with a caller-provided text loader (fetch in the app, fs in tests). */
-export async function loadDictionary(readText: (path: string) => Promise<string>): Promise<Dictionary> {
+export async function loadDictionary(
+  readText: (path: string) => Promise<string>,
+): Promise<Dictionary> {
   const [core, common, extra, roots] = await Promise.all([
     readText(DICTIONARY_FILES.core),
     readText(DICTIONARY_FILES.common),

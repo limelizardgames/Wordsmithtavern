@@ -37,7 +37,12 @@ describe('saves', () => {
     expect(save.coins).toBe(999);
     expect(save.xp).toBe(1234);
     expect(save.recipes).toEqual(['frothy-ale', 'hearty-stew', 'honey-mead']);
-    expect(save.guests.barnaby).toEqual({ chapter: 2, friendship: 3, visits: 4, lastChapterDay: 6 });
+    expect(save.guests.barnaby).toEqual({
+      chapter: 2,
+      friendship: 3,
+      visits: 4,
+      lastChapterDay: 6,
+    });
     expect(save.guests.junk).toBeUndefined();
     expect(save.settings).toEqual({ sound: false, music: true, haptics: true, relaxed: false });
     expect(save.flags).toEqual({ introDone: true });
@@ -63,7 +68,11 @@ describe('daily gift', () => {
 
   it('builds a streak on consecutive days and resets after a gap', () => {
     let save = fresh();
-    expect(dailyGiftStatus(save, '2026-03-01')).toEqual({ available: true, streak: 1, amount: DAILY_GIFTS[0] });
+    expect(dailyGiftStatus(save, '2026-03-01')).toEqual({
+      available: true,
+      streak: 1,
+      amount: DAILY_GIFTS[0],
+    });
     save = claimDailyGift(save, '2026-03-01');
     expect(dailyGiftStatus(save, '2026-03-01').available).toBe(false);
     expect(dailyGiftStatus(save, '2026-03-02').streak).toBe(2);

@@ -35,7 +35,8 @@ export function storyComplete(save: SaveData, guest: GuestDef): boolean {
 export function isGuestUnlocked(guest: GuestDef, save: SaveData, content: GameContent): boolean {
   const level = levelFromXp(save.xp);
   if (level < guest.unlock.level) return false;
-  if (guest.unlock.furniture && !save.furniture.owned.includes(guest.unlock.furniture)) return false;
+  if (guest.unlock.furniture && !save.furniture.owned.includes(guest.unlock.furniture))
+    return false;
   if (guest.unlock.afterStoryOf) {
     const other = content.guests.get(guest.unlock.afterStoryOf);
     if (other && !storyComplete(save, other)) return false;
@@ -104,7 +105,8 @@ export function planNight(
   const count = customersPerDay(level, bonuses.extraCustomers);
   const day = save.day;
   const unlocked = content.guestList.filter((g) => isGuestUnlocked(g, save, content));
-  const storyVisitsAllowed = count >= 5 ? 2 : 1;
+  // Returning guests' chapters per night, on top of any newcomer's introduction.
+  const chaptersAllowed = count >= 5 ? 2 : 1;
 
   const plans: CustomerPlan[] = [];
   const used = new Set<string>();
@@ -114,6 +116,7 @@ export function planNight(
     plans.push({ guestId: newcomer.id, chapter: 0, recipeId: '' });
     used.add(newcomer.id);
   }
+  const storyVisitsAllowed = plans.length + chaptersAllowed;
 
   const due = unlocked
     .filter((g) => !used.has(g.id) && guestProgress(save, g.id).visits > 0)
@@ -144,7 +147,8 @@ export function planNight(
     }
   }
 
-  while (plans.length < count) plans.push({ townsfolk: townsfolkVisit(content, rng), recipeId: '' });
+  while (plans.length < count)
+    plans.push({ townsfolk: townsfolkVisit(content, rng), recipeId: '' });
 
   // The very first night keeps the story guest first so the tutorial meets a named character.
   const ordered = save.stats.nightsOpened === 0 ? plans : shuffle(rng, plans);
@@ -219,9 +223,15 @@ export function applyReward(
   return { save: next, granted };
 }
 
-export function writeReview(stars: number, recipe: RecipeDef, rng: Rng): string {
+export function writeReview(
+  stars: number,
+  recipe: RecipeDef,
+  rng: Rng,
+  avoid: readonly string[] = [],
+): string {
   const pool = REVIEWS[Math.max(1, Math.min(5, stars))] ?? REVIEWS[3]!;
-  return pick(rng, pool).replaceAll('{recipe}', recipe.name);
+  const fresh = pool.filter((t) => !avoid.includes(t.replaceAll('{recipe}', recipe.name)));
+  return pick(rng, fresh.length ? fresh : pool).replaceAll('{recipe}', recipe.name);
 }
 
 export interface ServeOutcome {
@@ -303,7 +313,12 @@ export function serveOrder(
     xp: payout.xp,
     stars: payout.stars,
     complete: payout.complete,
-    review: writeReview(payout.stars, recipe, rng),
+    review: writeReview(
+      payout.stars,
+      recipe,
+      rng,
+      shift.results.map((r) => r.review),
+    ),
   };
   next = {
     ...next,

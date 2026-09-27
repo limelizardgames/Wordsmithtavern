@@ -19,6 +19,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#3f7d3a',
       hatAccent: '#d6453d',
       outfit: '#4a8a3f',
+      outfitStyle: 'tunic',
       outfitAccent: '#e3b448',
       eyes: 'wide',
       nose: 'button',
@@ -52,7 +53,11 @@ export const GUESTS: GuestDef[] = [
         'I’ve composed three verses about waiting. They’re all in a minor key.',
         'Even my lute is getting peckish.',
       ],
-      waiting: ['Hmm hmm hmm... what rhymes with “hungry”?', '*strums impatiently*', 'No rush! Only... a slight rush.'],
+      waiting: [
+        'Hmm hmm hmm... what rhymes with “hungry”?',
+        '*strums impatiently*',
+        'No rush! Only... a slight rush.',
+      ],
       banter: [
         'The Ember ballad is now a trilogy. She wants a fourth. Dragons always want a fourth.',
         'Did you know “orange” rhymes with nothing? I’ve checked. Twice.',
@@ -64,8 +69,13 @@ export const GUESTS: GuestDef[] = [
       {
         title: 'A Bard Arrives',
         arrive: [
-          g('Greetings, new barkeep! Barnaby Bramblefoot: bard, poet, and occasional juggler.', 'happy'),
-          g('I am composing the greatest ballad Quillhaven has ever heard: “The Dragon of Mount Grumble”!'),
+          g(
+            'Greetings, new barkeep! Barnaby Bramblefoot: bard, poet, and occasional juggler.',
+            'happy',
+          ),
+          g(
+            'I am composing the greatest ballad Quillhaven has ever heard: “The Dragon of Mount Grumble”!',
+          ),
           b('Have you ever actually met a dragon?'),
           g('Details! Art is about the heart, not the facts.'),
         ],
@@ -132,7 +142,9 @@ export const GUESTS: GuestDef[] = [
         done: [
           g('The Ballad of Ember is complete! Ten verses, four key changes, one wagon.', 'happy'),
           g('Take my old lute. Ember signed it. The scorch marks are her autograph.'),
-          g('She says she’ll drop by once your tavern is famous enough. Save her a large table. Or a small field.'),
+          g(
+            'She says she’ll drop by once your tavern is famous enough. Save her a large table. Or a small field.',
+          ),
         ],
         reward: { coins: 120, furniture: 'golden-lute' },
       },
@@ -154,6 +166,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#5b3a24',
       hatAccent: '#8a5a36',
       outfit: '#6b4b3a',
+      outfitStyle: 'apron',
       outfitAccent: '#a7b0b5',
       nose: 'big',
       eyes: 'dot',
@@ -186,7 +199,11 @@ export const GUESTS: GuestDef[] = [
         'Hmph. My beard grew an inch while I waited.',
         'I’m not angry. This is just my face. Mostly.',
       ],
-      waiting: ['*taps a hammer on the counter, rhythmically*', 'Is that a mug or a thimble?', 'I could build a kitchen faster.'],
+      waiting: [
+        '*taps a hammer on the counter, rhythmically*',
+        'Is that a mug or a thimble?',
+        'I could build a kitchen faster.',
+      ],
       banter: [
         'The Unbreakable Tankard is holding up. I tested it on three trolls.',
         'Barley and I have an understanding. He doesn’t comment on my beard.',
@@ -215,18 +232,25 @@ export const GUESTS: GuestDef[] = [
           b('So it’s less of a tankard, more of an anchor.'),
         ],
         order: 'A {recipe}. I need to think lighter thoughts.',
-        done: [g('Lighter metal. Mithril, perhaps. Perhaps... slightly smaller. No. Never smaller.')],
+        done: [
+          g('Lighter metal. Mithril, perhaps. Perhaps... slightly smaller. No. Never smaller.'),
+        ],
         reward: { coins: 40 },
       },
       {
         title: 'Too Magical',
         arrive: [
           g('Tankard number two! Enchanted to never spill.', 'happy'),
-          g('Unfortunately it also never pours. It just holds your ale. Forever. Smugly.', 'grumpy'),
+          g(
+            'Unfortunately it also never pours. It just holds your ale. Forever. Smugly.',
+            'grumpy',
+          ),
           b('I like it already.'),
         ],
         order: 'A {recipe}. In a normal bowl. For now.',
-        done: [g('Enchantments are tricky. Wizards make it look easy. Most wizards. Not Fizzlewick.')],
+        done: [
+          g('Enchantments are tricky. Wizards make it look easy. Most wizards. Not Fizzlewick.'),
+        ],
         reward: { coins: 50 },
       },
       {
@@ -251,7 +275,12 @@ export const GUESTS: GuestDef[] = [
           g('It’s yours, Wordsmith. Hang it where everyone can see.'),
         ],
         order: 'Let’s toast it properly. A {recipe}!',
-        done: [g('Perfect. I’ll be back to check nobody’s dented it. Nobody can. But I’ll check.', 'happy')],
+        done: [
+          g(
+            'Perfect. I’ll be back to check nobody’s dented it. Nobody can. But I’ll check.',
+            'happy',
+          ),
+        ],
         reward: { coins: 100, furniture: 'legendary-tankard' },
       },
     ],
@@ -272,6 +301,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#5b3b8c',
       hatAccent: '#f4d35e',
       outfit: '#4b3a8c',
+      outfitStyle: 'robe',
       outfitAccent: '#f4d35e',
       nose: 'long',
       eyes: 'dot',
@@ -304,7 +334,11 @@ export const GUESTS: GuestDef[] = [
         'Tick tock, as my enchanted clock says. It also says “bananas”, sometimes.',
         'My beard is getting longer. That’s not a spell. That’s time.',
       ],
-      waiting: ['*mutters* I before E, except after... hmm.', 'Fireball has two L’s. Or three?', '*accidentally turns a spoon into a smaller spoon*'],
+      waiting: [
+        '*mutters* I before E, except after... hmm.',
+        'Fireball has two L’s. Or three?',
+        '*accidentally turns a spoon into a smaller spoon*',
+      ],
       banter: [
         'I passed! Now I’m studying for the Advanced Exam. Silent letters. Terrifying.',
         'I taught Barley to levitate. Briefly. He did not enjoy it.',
@@ -315,7 +349,9 @@ export const GUESTS: GuestDef[] = [
       {
         title: 'A Slight Mishap',
         arrive: [
-          g('Ahem! Fizzlewick the Befuddled. Wizard. Former wizard. Future wizard. It’s complicated.'),
+          g(
+            'Ahem! Fizzlewick the Befuddled. Wizard. Former wizard. Future wizard. It’s complicated.',
+          ),
           g('I tried to cast FIREBALL on the way here, but I spelled it wrong.', 'sad'),
           b('What happened?'),
           g('I cast FIRE BALL. There’s now a very warm dance in the town square.'),
@@ -355,7 +391,10 @@ export const GUESTS: GuestDef[] = [
       {
         title: 'Cramming',
         arrive: [
-          g('The exam is tomorrow. I’ve been studying your menu. It’s full of excellent words.', 'happy'),
+          g(
+            'The exam is tomorrow. I’ve been studying your menu. It’s full of excellent words.',
+            'happy',
+          ),
           g('“Stew.” Four letters. No silent letters. No surprises. A perfect word.'),
           b('And a perfect meal. Unlike your spells.'),
         ],
@@ -370,7 +409,9 @@ export const GUESTS: GuestDef[] = [
           g('The final word was “TAVERN”. I thought of you and spelled it perfectly.'),
           b('And the examiner?'),
           g('Human again. Mostly. He still catches flies. We don’t mention it.'),
-          g('Take my old spellbook. The misspelled spells are crossed out. It’s a very thin book now.'),
+          g(
+            'Take my old spellbook. The misspelled spells are crossed out. It’s a very thin book now.',
+          ),
         ],
         order: 'A celebratory {recipe}!',
         done: [g('To spelling! To friendship! To only mildly dangerous magic!', 'happy')],
@@ -393,6 +434,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#a0522d',
       hatAccent: '#d9a441',
       outfit: '#c47a2c',
+      outfitStyle: 'vest',
       outfitAccent: '#6b4226',
       nose: 'long',
       eyes: 'wide',
@@ -425,7 +467,11 @@ export const GUESTS: GuestDef[] = [
         'Squeak’s getting grumpy. He bites when he’s grumpy. So do I, honestly.',
         'I could’ve sold three bridges by now.',
       ],
-      waiting: ['*Squeak nibbles the menu*', 'Wanna buy a treasure map? It leads here. The treasure is you!', '*jingles pockets suspiciously*'],
+      waiting: [
+        '*Squeak nibbles the menu*',
+        'Wanna buy a treasure map? It leads here. The treasure is you!',
+        '*jingles pockets suspiciously*',
+      ],
       banter: [
         'The egg hatched, eh? Told you it was genuine. I’m as surprised as you are.',
         'Squeak opened a savings account. He’s richer than me now.',
@@ -443,7 +489,11 @@ export const GUESTS: GuestDef[] = [
           g('Dragons sprout. Everybody knows that.'),
         ],
         order: 'Think it over with a {recipe}. My treat! You pay.',
-        done: [g('No deal? Fair enough. Squeak says you’ve got a good eye. Squeak’s never wrong. He’s a rat.')],
+        done: [
+          g(
+            'No deal? Fair enough. Squeak says you’ve got a good eye. Squeak’s never wrong. He’s a rat.',
+          ),
+        ],
         reward: { coins: 30 },
       },
       {
@@ -455,14 +505,18 @@ export const GUESTS: GuestDef[] = [
           g('...Squeak says I should stop selling invisible things. He’s getting soft.', 'sad'),
         ],
         order: 'A {recipe}, please. Visible, preferably.',
-        done: [g('Maybe I’ll try selling real stuff. Squeak’s idea. He’s full of ideas. And crumbs.')],
+        done: [
+          g('Maybe I’ll try selling real stuff. Squeak’s idea. He’s full of ideas. And crumbs.'),
+        ],
         reward: { coins: 40 },
       },
       {
         title: 'Honest Pip',
         arrive: [
           g('I was an honest merchant for a whole day!', 'happy'),
-          g('Sold one sock. A real sock. It had a hole in it, and I TOLD the buyer about the hole.'),
+          g(
+            'Sold one sock. A real sock. It had a hole in it, and I TOLD the buyer about the hole.',
+          ),
           b('Proud of you.'),
           g('Made two coppers. Squeak says it’s a start. I say it’s a sock.'),
         ],
@@ -488,11 +542,18 @@ export const GUESTS: GuestDef[] = [
           g('IT HATCHED! IT’S A DRAGON! A TINY ONE!', 'surprised'),
           g('Doug’s farm is at the foot of Mount Grumble. In hindsight, that was a clue.'),
           b('A real dragon egg, sold as a potato, by a goblin who thought he was lying.'),
-          g('I can’t keep her. Squeak’s terrified. Will you look after her? She likes warm places and shiny things.'),
+          g(
+            'I can’t keep her. Squeak’s terrified. Will you look after her? She likes warm places and shiny things.',
+          ),
           g('Genuine article. No refunds.', 'happy'),
         ],
         order: 'One {recipe} to celebrate. And a tiny bowl for her!',
-        done: [g('Best deal I ever made, and I didn’t even make money. Weird feeling. Nice, though.', 'happy')],
+        done: [
+          g(
+            'Best deal I ever made, and I didn’t even make money. Weird feeling. Nice, though.',
+            'happy',
+          ),
+        ],
         reward: { coins: 80, furniture: 'hatchling-nest' },
       },
     ],
@@ -513,6 +574,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#b8c2cc',
       hatAccent: '#2f5fa7',
       outfit: '#9aa6b2',
+      outfitStyle: 'armor',
       outfitAccent: '#2f5fa7',
       nose: 'big',
       eyes: 'dot',
@@ -522,7 +584,8 @@ export const GUESTS: GuestDef[] = [
     patienceMult: 1,
     tipMult: 1.2,
     unlock: { level: 3, furniture: 'notice-board' },
-    rumor: 'A knight is looking for somewhere to pin his quest notices. A notice board might catch his eye.',
+    rumor:
+      'A knight is looking for somewhere to pin his quest notices. A notice board might catch his eye.',
     bio: 'A noble knight on a quest for the Holy Grail. His quest scroll fell in a puddle, so he follows the smudged bits.',
     lines: {
       greet: [
@@ -545,7 +608,11 @@ export const GUESTS: GuestDef[] = [
         'I have besieged castles quicker than this.',
         'My armour is starting to squeak with impatience.',
       ],
-      waiting: ['*polishes sword on a napkin*', '*clanks nervously*', 'Is it ready? I ask as a knight. Also as a hungry man.'],
+      waiting: [
+        '*polishes sword on a napkin*',
+        '*clanks nervously*',
+        'Is it ready? I ask as a knight. Also as a hungry man.',
+      ],
       banter: [
         'The Holy Grill has found its noble purpose: kebabs.',
         'My horse sends his regards. He is also eating your window box.',
@@ -581,7 +648,10 @@ export const GUESTS: GuestDef[] = [
         title: 'The Holy Gail',
         arrive: [
           g('I found Gail.'),
-          g('She is a very nice lady who runs a bakery. She was quite confused. Then quite annoyed.', 'sad'),
+          g(
+            'She is a very nice lady who runs a bakery. She was quite confused. Then quite annoyed.',
+            'sad',
+          ),
           b('Did she give you anything?'),
           g('A loaf of bread and a firm request to never come back.'),
         ],
@@ -595,7 +665,10 @@ export const GUESTS: GuestDef[] = [
       {
         title: 'Grill Hunting',
         arrive: [
-          g('Legend speaks of a grill forged by the first cook, lost in the Caverns of Crumb.', 'happy'),
+          g(
+            'Legend speaks of a grill forged by the first cook, lost in the Caverns of Crumb.',
+            'happy',
+          ),
           g('I shall need courage, a torch, and a very long spatula.'),
           b('Do knights use spatulas?'),
           g('This one does. Fear my flipping.'),
@@ -611,10 +684,17 @@ export const GUESTS: GuestDef[] = [
           g('Radiant! Ancient! Slightly greasy!'),
           b('So the Grail was a Grill all along?'),
           g('Who’s to say? Perhaps the real Grail was the kebabs we made along the way.'),
-          g('I bequeath it to the finest kitchen in the land. Yours! Along with my recipe for Knightly Kebabs.'),
+          g(
+            'I bequeath it to the finest kitchen in the land. Yours! Along with my recipe for Knightly Kebabs.',
+          ),
         ],
         order: 'Let us christen it! A {recipe}!',
-        done: [g('My quest is complete! What does one do after a quest? Lunch, I suppose. Daily.', 'happy')],
+        done: [
+          g(
+            'My quest is complete! What does one do after a quest? Lunch, I suppose. Daily.',
+            'happy',
+          ),
+        ],
         reward: { coins: 80, furniture: 'holy-grill', recipe: 'knightly-kebab' },
       },
     ],
@@ -631,9 +711,10 @@ export const GUESTS: GuestDef[] = [
       hair: '#5f8f3e',
       beard: 'long',
       outfit: '#6b4a2e',
+      outfitStyle: 'bark',
       outfitAccent: '#5f8f3e',
       nose: 'long',
-      eyes: 'sleepy',
+      eyes: 'glow',
       accessories: ['leaves'],
     },
     favorites: ['barkroot-tea', 'mushroom-pie'],
@@ -663,7 +744,11 @@ export const GUESTS: GuestDef[] = [
         'I have waited... for rain... less long... than this.',
         'Hmm... I have started... to grow... moss.',
       ],
-      waiting: ['Hmm... hoom...', '*a leaf drifts gently down from Oakley’s head*', 'Did I... order? Hoom... I believe... I did.'],
+      waiting: [
+        'Hmm... hoom...',
+        '*a leaf drifts gently down from Oakley’s head*',
+        'Did I... order? Hoom... I believe... I did.',
+      ],
       banter: [
         'Hoom... the sapling grows. Her first word... was “photosynthesis”.',
         'Barley... is very... loud... for a cup.',
@@ -710,7 +795,9 @@ export const GUESTS: GuestDef[] = [
         title: 'Market Day',
         arrive: [
           g('Hoom... I went... to the market.', 'sad'),
-          g('It took me... three days... to cross the square. People kept... hanging washing... on me.'),
+          g(
+            'It took me... three days... to cross the square. People kept... hanging washing... on me.',
+          ),
           b('Any luck?'),
           g('A goblin... said he sold her... long ago... as a “magic bean”.'),
           b('Oh, Pip.'),
@@ -750,6 +837,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#2d2438',
       hatAccent: '#7d5ba6',
       outfit: '#241e2e',
+      outfitStyle: 'robe',
       outfitAccent: '#7d5ba6',
       nose: 'pointy',
       eyes: 'sleepy',
@@ -782,7 +870,11 @@ export const GUESTS: GuestDef[] = [
         'Bones is tapping his foot. Loudly. He’s mostly foot.',
         'I’m not upset! I’m just... gloomy. It’s my surname.',
       ],
-      waiting: ['*Bones rattles softly*', 'Sorry, is Bones in the way? He gets everywhere.', 'Do you have a quiet table? Near the back? Not too near. Crypt vibes.'],
+      waiting: [
+        '*Bones rattles softly*',
+        'Sorry, is Bones in the way? He gets everywhere.',
+        'Do you have a quiet table? Near the back? Not too near. Crypt vibes.',
+      ],
       banter: [
         'Book club is going well! Bones only brought one skull-themed book this time.',
         'I made a friend with a pulse! Gail, from the bakery. She’s very forgiving.',
@@ -795,7 +887,10 @@ export const GUESTS: GuestDef[] = [
         arrive: [
           g('Um. Hello. I’m Mortimer. I’m a necromancer. Please don’t scream.', 'sad'),
           b('I’m a talking tankard. We’re all weird here.'),
-          g('Oh! Oh good. This is Bones. He’s my best friend. My only friend. He’s a skeleton.', 'happy'),
+          g(
+            'Oh! Oh good. This is Bones. He’s my best friend. My only friend. He’s a skeleton.',
+            'happy',
+          ),
         ],
         order: 'One {recipe}, please. Bones can’t eat, but he likes to be included.',
         done: [
@@ -807,12 +902,16 @@ export const GUESTS: GuestDef[] = [
       {
         title: 'Small Talk',
         arrive: [
-          g('I’ve been practising conversation. I read a book: “How to Make Friends and Not Raise the Dead”.'),
+          g(
+            'I’ve been practising conversation. I read a book: “How to Make Friends and Not Raise the Dead”.',
+          ),
           g('Chapter one: don’t open with “I can talk to your ancestors”.'),
           b('Solid advice.'),
         ],
         order: 'A {recipe}, please. And... how was your day? Did I do that right?',
-        done: [g('I did it! Small talk! I feel like I raised a whole cemetery. In a good way.', 'happy')],
+        done: [
+          g('I did it! Small talk! I feel like I raised a whole cemetery. In a good way.', 'happy'),
+        ],
         reward: { coins: 50 },
       },
       {
@@ -821,7 +920,9 @@ export const GUESTS: GuestDef[] = [
           g('I threw a party!', 'happy'),
           g('Eleven guests came. Ten were skeletons. But one was Gail, from the bakery!'),
           b('Gail from the bakery? Lovely woman. Terrifying scones.'),
-          g('She said she’s had a very strange month. Something about a knight. She wouldn’t elaborate.'),
+          g(
+            'She said she’s had a very strange month. Something about a knight. She wouldn’t elaborate.',
+          ),
         ],
         order: 'A celebratory {recipe}, please!',
         done: [g('Next time I’ll invite only people with skin. Baby steps.')],
@@ -836,19 +937,32 @@ export const GUESTS: GuestDef[] = [
           g('He’s four hundred years old. He’s allowed. But I miss him.'),
         ],
         order: 'A {recipe}. The sad kind. Is there a sad kind?',
-        done: [g('If you see a skeleton looking for work, be kind. He’s bad at interviews. He just grins.')],
+        done: [
+          g(
+            'If you see a skeleton looking for work, be kind. He’s bad at interviews. He just grins.',
+          ),
+        ],
         reward: { coins: 70 },
       },
       {
         title: 'Book Club',
         arrive: [
           g('Bones came back! He got a job as a coat rack at the theatre. He loves it!', 'happy'),
-          g('And I realised... I have friends now. You. Barley. Gail. Even Fizzlewick, who keeps turning me into a newt.'),
+          g(
+            'And I realised... I have friends now. You. Barley. Gail. Even Fizzlewick, who keeps turning me into a newt.',
+          ),
           b('We’re very fond of you, Mort.'),
-          g('I’d like to start a book club here. I built a reading nook for it. No bones in it. Promise.'),
+          g(
+            'I’d like to start a book club here. I built a reading nook for it. No bones in it. Promise.',
+          ),
         ],
         order: 'One {recipe} for the first meeting!',
-        done: [g('The first book is about friendship. Bones picked it. He’s surprisingly sentimental.', 'happy')],
+        done: [
+          g(
+            'The first book is about friendship. Bones picked it. He’s surprisingly sentimental.',
+            'happy',
+          ),
+        ],
         reward: { coins: 90, furniture: 'reading-nook' },
       },
     ],
@@ -868,6 +982,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#7b2d8b',
       hatAccent: '#f2c14e',
       outfit: '#2a6f73',
+      outfitStyle: 'shawl',
       outfitAccent: '#f2c14e',
       nose: 'button',
       eyes: 'sleepy',
@@ -877,7 +992,8 @@ export const GUESTS: GuestDef[] = [
     patienceMult: 1,
     tipMult: 1.2,
     unlock: { level: 5, furniture: 'crystal-ball' },
-    rumor: 'A mysterious fortune teller visits only places with a crystal ball. She says she saw it coming.',
+    rumor:
+      'A mysterious fortune teller visits only places with a crystal ball. She says she saw it coming.',
     bio: 'A fortune teller whose predictions are always accurate, just never in the way anyone expects.',
     lines: {
       greet: [
@@ -900,7 +1016,11 @@ export const GUESTS: GuestDef[] = [
         'The crystal ball is fogging up. That’s me. Sighing.',
         'The cards say “hurry”. So do I.',
       ],
-      waiting: ['*gazes meaningfully into a spoon*', 'I sense... a delay.', 'Your future holds... cooking. Specifically, right now.'],
+      waiting: [
+        '*gazes meaningfully into a spoon*',
+        'I sense... a delay.',
+        'Your future holds... cooking. Specifically, right now.',
+      ],
       banter: [
         'I foresee you will enjoy this conversation. Too late now if you don’t.',
         'Barley’s future is bright. Also foamy.',
@@ -912,11 +1032,15 @@ export const GUESTS: GuestDef[] = [
         title: 'A Vision',
         arrive: [
           g('Madame Zephyrine. I have come because of a vision.'),
-          g('I saw a tavern. A great fire. A thousand guests. And a tankard that never stops talking.'),
+          g(
+            'I saw a tavern. A great fire. A thousand guests. And a tankard that never stops talking.',
+          ),
           b('Rude. But accurate.'),
         ],
         order: 'The vision also included a {recipe}. Let us honour it.',
-        done: [g('The fire, the guests... it will come to pass. Mark my words. Well, mark my vowels.')],
+        done: [
+          g('The fire, the guests... it will come to pass. Mark my words. Well, mark my vowels.'),
+        ],
         reward: { coins: 40 },
       },
       {
@@ -938,7 +1062,12 @@ export const GUESTS: GuestDef[] = [
           b('Honestly? I’d like to meet a tall sandwich.'),
         ],
         order: 'A {recipe}. I cannot see the future on an empty stomach.',
-        done: [g('Wait... the cracks... they spell something. T-A-V-E-R-N. Something big is coming here.', 'surprised')],
+        done: [
+          g(
+            'Wait... the cracks... they spell something. T-A-V-E-R-N. Something big is coming here.',
+            'surprised',
+          ),
+        ],
         reward: { coins: 60 },
       },
       {
@@ -956,12 +1085,21 @@ export const GUESTS: GuestDef[] = [
         title: 'The Goose Explained',
         arrive: [
           g('I understand now! The goose!', 'happy'),
-          g('The goose was my great-great-grandmother’s. She predicted the future too. By honking.'),
+          g(
+            'The goose was my great-great-grandmother’s. She predicted the future too. By honking.',
+          ),
           b('So the goose was a prophet?'),
-          g('The goose was EVERYTHING. These lanterns were hers. They twinkle before good news. Take them.'),
+          g(
+            'The goose was EVERYTHING. These lanterns were hers. They twinkle before good news. Take them.',
+          ),
         ],
         order: 'One last {recipe}, as foreseen!',
-        done: [g('I foresee we’ll be friends for a very long time. And I’m never wrong. Except about the sandwich.', 'happy')],
+        done: [
+          g(
+            'I foresee we’ll be friends for a very long time. And I’m never wrong. Except about the sandwich.',
+            'happy',
+          ),
+        ],
         reward: { coins: 90, furniture: 'lights-stars' },
       },
     ],
@@ -982,6 +1120,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#2b2b2b',
       hatAccent: '#e0b44a',
       outfit: '#a4262c',
+      outfitStyle: 'coat',
       outfitAccent: '#e0b44a',
       nose: 'big',
       eyes: 'dot',
@@ -991,7 +1130,8 @@ export const GUESTS: GuestDef[] = [
     patienceMult: 1,
     tipMult: 1.3,
     unlock: { level: 6, furniture: 'ship-bottle' },
-    rumor: 'An old sea dog is looking for a tavern with a proper nautical touch. A ship in a bottle, perhaps.',
+    rumor:
+      'An old sea dog is looking for a tavern with a proper nautical touch. A ship in a bottle, perhaps.',
     bio: 'A retired pirate whose tales grow taller with every tankard. Once fought a kraken “bigger than a mountain. Two mountains.”',
     lines: {
       greet: [
@@ -1014,7 +1154,11 @@ export const GUESTS: GuestDef[] = [
         'Arr... me patience is walkin’ the plank.',
         'I’ve waited so long me wooden leg got hungry. I don’t even have a wooden leg.',
       ],
-      waiting: ['*hums a sea shanty, off-key*', 'The kraken was THIS big. *gestures wider than the room*', 'Arr. Arr. ...Arr.'],
+      waiting: [
+        '*hums a sea shanty, off-key*',
+        'The kraken was THIS big. *gestures wider than the room*',
+        'Arr. Arr. ...Arr.',
+      ],
       banter: [
         'Gerald sends his love. He’s learned to juggle. Eight balls at once, the show-off.',
         'I’m writing me memoirs: “Mostly True Tales of the Sea”.',
@@ -1050,7 +1194,10 @@ export const GUESTS: GuestDef[] = [
         arrive: [
           g('Now the kraken, as I recall, was the size of a MOUNTAIN. Two mountains!', 'happy'),
           b('It’s grown again.'),
-          g('...In truth, I can’t quite remember how big it was. I was very young. It was very dark.', 'sad'),
+          g(
+            '...In truth, I can’t quite remember how big it was. I was very young. It was very dark.',
+            'sad',
+          ),
         ],
         order: 'A {recipe}, please. I’m feelin’ nostalgic.',
         done: [g('I wonder what happened to the old beastie. We parted on... confusing terms.')],
@@ -1073,12 +1220,19 @@ export const GUESTS: GuestDef[] = [
         arrive: [
           g('Wordsmith, meet Gerald! The terrifying kraken!', 'happy'),
           b('He’s the size of a teacup.'),
-          g('He was a baby back then. So was I, practically. We were both scared. I dropped me spoon on him.'),
+          g(
+            'He was a baby back then. So was I, practically. We were both scared. I dropped me spoon on him.',
+          ),
           g('He’s forgiven me! We’re starting a business. Sea tours. He does the tentacle waving.'),
           g('Take me old ship’s wheel. Every tavern needs a captain’s touch.'),
         ],
         order: 'A {recipe} for me, and a thimble of ale for Gerald!',
-        done: [g('Best friends after forty years. The sea is strange, but friendship’s stranger. Arr.', 'happy')],
+        done: [
+          g(
+            'Best friends after forty years. The sea is strange, but friendship’s stranger. Arr.',
+            'happy',
+          ),
+        ],
         reward: { coins: 100, furniture: 'ships-wheel' },
       },
     ],
@@ -1099,6 +1253,7 @@ export const GUESTS: GuestDef[] = [
       hatColor: '#2a2a2e',
       hatAccent: '#8b1e2d',
       outfit: '#5a5f6b',
+      outfitStyle: 'suit',
       outfitAccent: '#8b1e2d',
       nose: 'big',
       eyes: 'dot',
@@ -1131,7 +1286,11 @@ export const GUESTS: GuestDef[] = [
         'I’ve filled out three forms while waiting. For fun.',
         'Regulations permit a reasonable wait. This is slightly unreasonable.',
       ],
-      waiting: ['*scribbles in a tiny notebook*', '*measures the counter with a tiny ruler*', 'Is that tankard licensed to talk?'],
+      waiting: [
+        '*scribbles in a tiny notebook*',
+        '*measures the counter with a tiny ruler*',
+        'Is that tankard licensed to talk?',
+      ],
       banter: [
         'I’ve approved your tavern for another year. And the next. I’ve pre-approved the century.',
         'Barley’s talking licence is in order. I made him one myself.',
@@ -1159,28 +1318,41 @@ export const GUESTS: GuestDef[] = [
           g('To request more forms. Obviously.'),
         ],
         order: 'A {recipe}, while you fill these out. In triplicate.',
-        done: [g('...Perfectly completed. Nobody completes them perfectly. I don’t know how to feel.', 'surprised')],
+        done: [
+          g(
+            '...Perfectly completed. Nobody completes them perfectly. I don’t know how to feel.',
+            'surprised',
+          ),
+        ],
         reward: { coins: 60 },
       },
       {
         title: 'Off the Record',
         arrive: [
           g('This visit is... off the record.', 'sad'),
-          g('I never eat anywhere twice. Rules. No favouritism. But I keep thinking about your cooking.'),
+          g(
+            'I never eat anywhere twice. Rules. No favouritism. But I keep thinking about your cooking.',
+          ),
           b('Are you... enjoying yourself, Inspector?'),
           g('I don’t know. It’s never happened before.'),
         ],
         order: 'A {recipe}. Unofficially.',
-        done: [g('That was... nice. I shall have to file a report about how nice it was.', 'happy')],
+        done: [
+          g('That was... nice. I shall have to file a report about how nice it was.', 'happy'),
+        ],
         reward: { coins: 70 },
       },
       {
         title: 'A Complaint',
         arrive: [
           g('Someone has filed a complaint about you!', 'grumpy'),
-          g('It says: “Tavern too cosy. Nobody wants to leave. Town productivity down forty percent.”'),
+          g(
+            'It says: “Tavern too cosy. Nobody wants to leave. Town productivity down forty percent.”',
+          ),
           b('Who filed it?'),
-          g('...I did. Last month. Before I’d eaten here. I’m withdrawing it. That requires four more forms.'),
+          g(
+            '...I did. Last month. Before I’d eaten here. I’m withdrawing it. That requires four more forms.',
+          ),
         ],
         order: 'A {recipe}. I need strength for the paperwork.',
         done: [g('Complaint withdrawn. Righteousness restored. Stomach full.', 'happy')],
@@ -1217,7 +1389,8 @@ export const GUESTS: GuestDef[] = [
     patienceMult: 0.8,
     tipMult: 2,
     unlock: { level: 9, afterStoryOf: 'barnaby' },
-    rumor: 'Barnaby’s ballad has an admirer with wings. Finish his story, grow your fame, and she may visit.',
+    rumor:
+      'Barnaby’s ballad has an admirer with wings. Finish his story, grow your fame, and she may visit.',
     bio: 'A dragon of impeccable manners and enormous appetite. Adores bad poetry, especially Barnaby’s.',
     lines: {
       greet: [
@@ -1240,7 +1413,11 @@ export const GUESTS: GuestDef[] = [
         '*smoke curls from her nostrils* Sorry. Hungry smoke.',
         'I’m being very patient. For a dragon. Which is not very.',
       ],
-      waiting: ['*carefully does not sneeze*', 'Is it hot in here, or is it me? It’s me. Sorry.', '*taps claws politely, leaving small grooves in the counter*'],
+      waiting: [
+        '*carefully does not sneeze*',
+        'Is it hot in here, or is it me? It’s me. Sorry.',
+        '*taps claws politely, leaving small grooves in the counter*',
+      ],
       banter: [
         'Barnaby’s writing a sequel about my table manners. They’re excellent, thank you.',
         'Pip’s hatchling calls me Auntie Ember. I’ve never been happier.',
@@ -1268,7 +1445,12 @@ export const GUESTS: GuestDef[] = [
           g('*hic* Only for curtains.'),
         ],
         order: 'A {recipe}, quickly! Food cures hiccups!',
-        done: [g('Cured! Only one curtain lost. I’ll pay for it. With a small mountain of gold.', 'happy')],
+        done: [
+          g(
+            'Cured! Only one curtain lost. I’ll pay for it. With a small mountain of gold.',
+            'happy',
+          ),
+        ],
         reward: { coins: 120 },
       },
       {
@@ -1287,7 +1469,9 @@ export const GUESTS: GuestDef[] = [
         title: 'Auntie Ember',
         arrive: [
           g('I met Pip’s little hatchling! A baby dragon, sold as a potato! The scandal!', 'happy'),
-          g('She sneezed a spark at Squeak’s tail. Tiny flame. He’s fine. Very dramatic about it, though.'),
+          g(
+            'She sneezed a spark at Squeak’s tail. Tiny flame. He’s fine. Very dramatic about it, though.',
+          ),
           b('You’re going to be the cool aunt, aren’t you?'),
           g('The COOLEST aunt. Ironic, since I run at about eight hundred degrees.'),
         ],
@@ -1306,7 +1490,12 @@ export const GUESTS: GuestDef[] = [
           b('I’M FINE.', 'grumpy'),
         ],
         order: 'One last thing: a {recipe}, cooked on MY fire!',
-        done: [g('A great fire for a great tavern. Now all you need is a thousand guests. It’ll get there.', 'happy')],
+        done: [
+          g(
+            'A great fire for a great tavern. Now all you need is a thousand guests. It’ll get there.',
+            'happy',
+          ),
+        ],
         reward: { coins: 200, furniture: 'hearth-dragon' },
       },
     ],

@@ -1,0 +1,88 @@
+.mock-ad {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: #111;
+  color: #fff;
+  padding: var(--safe-top) 0 var(--safe-bottom);
+}
+
+.mock-ad-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.mock-ad-label {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f2b134;
+  color: #111;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mock-ad-timer {
+  opacity: 0.8;
+}
+
+.mock-ad-close {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.mock-ad-body {
+  flex: 1;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.mock-ad-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.mock-ad-skip {
+  margin-top: 16px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 14px;
+}
+
+.mock-ad-earned {
+  font-weight: 700;
+}
+
+.mock-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: var(--safe-bottom);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #f4f4f4;
+  color: #333;
+  font-size: 13px;
+  border-top: 1px solid #ccc;
+}

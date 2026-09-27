@@ -15,7 +15,11 @@ export const AD_RULES = {
   minSecondsAfterRewarded: 120,
 } as const;
 
-export function shouldShowInterstitial(ads: AdsState, nightsCompleted: number, now: number): boolean {
+export function shouldShowInterstitial(
+  ads: AdsState,
+  nightsCompleted: number,
+  now: number,
+): boolean {
   if (ads.removeAds) return false;
   if (nightsCompleted < AD_RULES.graceNights) return false;
   if (ads.nightsSinceInterstitial < AD_RULES.nightsBetweenInterstitials) return false;
@@ -45,5 +49,5 @@ export function noteRewardedWatched(ads: AdsState, now: number): AdsState {
 /** Banners are shown on menu screens only, never over the letter wheel. */
 export function bannerAllowed(ads: AdsState, screen: string): boolean {
   if (ads.removeAds) return false;
-  return screen === 'hub' || screen === 'shop' || screen === 'guests';
+  return screen === 'hub' || screen === 'shop' || screen === 'recipes' || screen === 'guests';
 }

@@ -1,0 +1,253 @@
+.screen {
+  grid-area: 1 / 1;
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  animation: screen-in 0.28s ease both;
+}
+
+@keyframes screen-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ── Service (the puzzle) ─────────────────────────────────────────────── */
+.service {
+  --wheel-size: min(86vw, 39dvh, 420px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(96px, 1fr) auto auto;
+  grid-template-areas:
+    'hud'
+    'scene'
+    'order'
+    'cook';
+  padding-bottom: calc(var(--safe-bottom) + 6px);
+}
+
+.service > .hud {
+  grid-area: hud;
+}
+
+.service-scene {
+  grid-area: scene;
+  margin: 0 10px 10px;
+  border-radius: 18px;
+  border: 3px solid #1d120b;
+  box-shadow:
+    0 5px 0 #140c07,
+    0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.service .order,
+.order-placeholder {
+  grid-area: order;
+  width: calc(100% - 20px);
+  max-width: 720px;
+  justify-self: center;
+}
+
+.order-placeholder {
+  height: 96px;
+}
+
+.cook {
+  grid-area: cook;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 0;
+  padding-top: 8px;
+}
+
+.wheel-wrap {
+  position: relative;
+  width: var(--wheel-size);
+  height: var(--wheel-size);
+}
+
+.corner-btn {
+  position: absolute;
+  top: -2px;
+  width: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 6px 4px 5px;
+  border-radius: 16px;
+  color: var(--text-light);
+  background: linear-gradient(180deg, #6e4326, #4a2c18);
+  border: 2px solid #1d120b;
+  box-shadow: 0 4px 0 #140c07;
+}
+
+/* Sit in the side margin when there's room; otherwise tuck into the wheel's empty corner. */
+.corner-btn.is-left {
+  left: max(-66px, calc((var(--wheel-size) - 100vw) / 2 + 6px));
+}
+
+.corner-btn.is-right {
+  right: max(-66px, calc((var(--wheel-size) - 100vw) / 2 + 6px));
+}
+
+.corner-btn:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #140c07;
+}
+
+.corner-btn:disabled {
+  opacity: 0.45;
+}
+
+.corner-btn-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.corner-btn-cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-2);
+}
+
+.bubble-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: #8a4a1e;
+  margin-bottom: 2px;
+}
+
+.payout {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: 5%;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 16px 10px;
+  border-radius: 18px;
+  background: rgba(20, 12, 7, 0.88);
+  border: 2px solid #f2b134;
+  box-shadow: 0 0 24px rgba(242, 177, 52, 0.45);
+  transform: translateX(-50%);
+  animation: payout-in 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+
+.payout-total {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--gold-2);
+  text-shadow: 0 2px 0 #000;
+}
+
+.payout-detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 10px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+@keyframes payout-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px) scale(0.6);
+  }
+}
+
+.calm-btn {
+  position: absolute;
+  z-index: 4;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 6px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  background: linear-gradient(180deg, #92c96b, #4f8a35);
+  border: 2px solid #244a17;
+  box-shadow: 0 3px 0 #244a17;
+  animation: pop-in 0.3s ease both;
+}
+
+.service .coach {
+  position: relative;
+  grid-area: scene;
+  align-self: end;
+  justify-self: center;
+  left: auto;
+  transform: none;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+/* ── Tablets and landscape: puzzle on the right ───────────────────────── */
+@media (orientation: landscape) and (min-width: 700px) {
+  .service {
+    --wheel-size: min(40vw, 58dvh, 470px);
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'hud hud'
+      'scene cook'
+      'order cook';
+  }
+
+  .service .order {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+  }
+
+  .cook {
+    justify-content: center;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 700px) {
+  .service {
+    --wheel-size: min(62vw, 38dvh, 440px);
+  }
+}
+
+@media (max-height: 700px) and (orientation: portrait) {
+  .service {
+    --wheel-size: min(86vw, 35dvh, 420px);
+  }
+
+  .preview {
+    height: 44px;
+  }
+}
+
+@media (max-height: 700px) {
+  .payout {
+    padding: 4px 12px 6px;
+  }
+
+  .payout-total {
+    font-size: 22px;
+  }
+
+  .payout-detail {
+    font-size: 11px;
+  }
+}

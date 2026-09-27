@@ -1,0 +1,112 @@
+.wheel {
+  position: relative;
+  width: var(--wheel-size, 280px);
+  height: var(--wheel-size, 280px);
+  flex: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.wheel-plate {
+  position: absolute;
+  inset: 3%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255, 220, 160, 0.14), transparent 60%),
+    radial-gradient(circle, #5a3820 0%, #432915 62%, #34200f 100%);
+  border: 4px solid #2b1a10;
+  box-shadow:
+    0 8px 0 #1d120b,
+    0 14px 28px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 6px rgba(160, 103, 58, 0.35),
+    inset 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.wheel.is-disabled .wheel-tile {
+  filter: grayscale(0.5) brightness(0.75);
+}
+
+.wheel-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.wheel-line {
+  fill: none;
+  stroke: #ffd36b;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 2px rgba(255, 190, 80, 0.8));
+}
+
+.wheel-line.is-live {
+  stroke-opacity: 0.75;
+}
+
+.wheel-tile {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 32%, #fffaf0 0%, #f7e8c4 55%, #e2c98f 100%);
+  border: 3px solid #2b1a10;
+  box-shadow:
+    0 4px 0 #8a6a44,
+    0 6px 10px rgba(0, 0, 0, 0.35);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: calc(var(--wheel-size, 280px) * 0.105);
+  line-height: 1;
+  pointer-events: none;
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease;
+  animation: tile-in 0.35s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+
+.wheel-tile span {
+  transform: translateY(1px);
+}
+
+.wheel-tile.is-picked {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: radial-gradient(circle at 40% 32%, #fff3b8 0%, #ffd36b 55%, #e59f22 100%);
+  box-shadow:
+    0 4px 0 #8a5a0e,
+    0 0 18px rgba(255, 200, 90, 0.75);
+}
+
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3) rotate(-30deg);
+  }
+}
+
+.wheel-shuffle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22%;
+  height: 22%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffd36b;
+  background: radial-gradient(circle, #6e4326, #4a2c18);
+  border: 3px solid #2b1a10;
+  box-shadow: 0 3px 0 #1d120b;
+}
+
+.wheel-shuffle:active {
+  transform: translate(-50%, calc(-50% + 2px));
+  box-shadow: 0 1px 0 #1d120b;
+}

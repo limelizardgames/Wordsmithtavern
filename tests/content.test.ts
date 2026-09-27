@@ -17,7 +17,8 @@ describe('content integrity', () => {
 
   it('only references things that exist', () => {
     for (const g of CONTENT.guestList) {
-      for (const fav of g.favorites) expect(CONTENT.recipes.has(fav), `${g.id} favourite ${fav}`).toBe(true);
+      for (const fav of g.favorites)
+        expect(CONTENT.recipes.has(fav), `${g.id} favourite ${fav}`).toBe(true);
       if (g.unlock.furniture) expect(CONTENT.furniture.has(g.unlock.furniture)).toBe(true);
       if (g.unlock.afterStoryOf) expect(CONTENT.guests.has(g.unlock.afterStoryOf)).toBe(true);
       for (const ch of g.story) {
@@ -55,7 +56,8 @@ describe('content integrity', () => {
     const texts: string[] = [];
     for (const g of CONTENT.guestList) {
       texts.push(...Object.values(g.lines).flat());
-      for (const ch of g.story) texts.push(ch.order, ...ch.arrive.map((l) => l.text), ...ch.done.map((l) => l.text));
+      for (const ch of g.story)
+        texts.push(ch.order, ...ch.arrive.map((l) => l.text), ...ch.done.map((l) => l.text));
     }
     for (const t of CONTENT.townsfolkList) texts.push(...Object.values(t.lines).flat());
     texts.push(...Object.values(REVIEWS).flat());
@@ -84,7 +86,9 @@ describe('content integrity', () => {
       for (const s of r.slots) expect(s.min).toBeLessThanOrEqual(r.letters);
       const roots = dict.rootsOfLength(r.letters);
       const sample = roots.filter((_, i) => i % 5 === 0);
-      const ok = sample.filter((root) => isSolvable(r.slots, dict.familiarSubwords(root), r.letters, 2));
+      const ok = sample.filter((root) =>
+        isSolvable(r.slots, dict.familiarSubwords(root), r.letters, 2),
+      );
       expect(ok.length / sample.length, r.id).toBeGreaterThan(0.85);
     }
   });
