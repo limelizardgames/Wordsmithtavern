@@ -1,0 +1,10 @@
+dist
+node_modules
+android
+ios
+public/data
+coverage
+playwright-report
+test-results
+package-lock.json
+licenses

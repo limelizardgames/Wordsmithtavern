@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Test output
+test-results/
+playwright-report/
+coverage/
+
+# Environment files (real AdMob IDs live here, never commit them)
+.env.local
+.env.*.local
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
