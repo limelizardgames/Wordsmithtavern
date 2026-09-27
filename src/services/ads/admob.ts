@@ -1,5 +1,6 @@
 import {
   AdMob,
+  AdmobConsentDebugGeography,
   AdmobConsentStatus,
   BannerAdPluginEvents,
   BannerAdPosition,
@@ -8,6 +9,7 @@ import {
   MaxAdContentRating,
   RewardAdPluginEvents,
   type AdmobConsentInfo,
+  type AdmobConsentRequestOptions,
 } from '@capacitor-community/admob';
 import type { PluginListenerHandle } from '@capacitor/core';
 import { AD_CONFIG, type AdUnits } from '../../config/ads';
@@ -18,6 +20,16 @@ const CONSENT_OK_KEY = 'wordsmith-tavern/ads-consent-ok';
 /** The plugin doesn't export this enum, so compare its string value. */
 const privacyRequired = (info: AdmobConsentInfo) =>
   String(info.privacyOptionsRequirementStatus) === 'REQUIRED';
+
+/** Shared by the start-up check and the refresh after the privacy options form. */
+const CONSENT_REQUEST: AdmobConsentRequestOptions = {
+  testDeviceIdentifiers: AD_CONFIG.testDevices,
+  tagForUnderAgeOfConsent: AD_CONFIG.tagForUnderAgeOfConsent,
+  debugGeography: AD_CONFIG.consentDebugGeography
+    ? AdmobConsentDebugGeography[AD_CONFIG.consentDebugGeography]
+    : AdmobConsentDebugGeography.DISABLED,
+};
+
 const RETRY_DELAYS = [15_000, 30_000, 60_000, 120_000, 300_000];
 
 /** Waits for one of several plugin events; used because show*() promises don't settle on dismiss. */
@@ -61,10 +73,7 @@ export class AdMobProvider implements AdProvider {
     // Google's order: consent first (UMP), and only request ads once consent allows it.
     let canRequestAds = false;
     try {
-      let info: AdmobConsentInfo = await AdMob.requestConsentInfo({
-        testDeviceIdentifiers: AD_CONFIG.testDevices,
-        tagForUnderAgeOfConsent: AD_CONFIG.tagForUnderAgeOfConsent,
-      });
+      let info: AdmobConsentInfo = await AdMob.requestConsentInfo(CONSENT_REQUEST);
       if (info.isConsentFormAvailable && info.status === AdmobConsentStatus.REQUIRED) {
         info = await AdMob.showConsentForm();
       }
@@ -132,7 +141,7 @@ export class AdMobProvider implements AdProvider {
 
   async showPrivacyOptions() {
     await AdMob.showPrivacyOptionsForm();
-    this.privacyRequired = privacyRequired(await AdMob.requestConsentInfo());
+    this.privacyRequired = privacyRequired(await AdMob.requestConsentInfo(CONSENT_REQUEST));
     this.emit();
   }
 

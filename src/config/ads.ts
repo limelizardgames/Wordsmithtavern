@@ -23,6 +23,15 @@ export type AdUnits = { banner: string; interstitial: string; rewarded: string }
 
 const production = env.VITE_ADMOB_PRODUCTION === 'true';
 
+/** Regions the consent SDK can pretend a test device is in (UMP "debug geography"). */
+const DEBUG_GEOGRAPHIES = ['EEA', 'US', 'OTHER'] as const;
+export type ConsentDebugGeography = (typeof DEBUG_GEOGRAPHIES)[number];
+
+function debugGeography(value: string | undefined): ConsentDebugGeography | undefined {
+  const wanted = value?.trim().toUpperCase();
+  return DEBUG_GEOGRAPHIES.find((g) => g === wanted);
+}
+
 export const AD_CONFIG = {
   /** Live ads only when explicitly enabled; otherwise every request is a test request. */
   production,
@@ -42,6 +51,11 @@ export const AD_CONFIG = {
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean),
+  /**
+   * Make the test devices look as if they are in the EEA (or a regulated US state) so the
+   * consent message can be checked from anywhere. Never applied to production builds.
+   */
+  consentDebugGeography: production ? undefined : debugGeography(env.VITE_ADMOB_DEBUG_GEOGRAPHY),
   /**
    * A cosy fantasy game for a general audience: keep ads family-friendly. If you ever target
    * children specifically, also set tagForChildDirectedTreatment and review Google Play's

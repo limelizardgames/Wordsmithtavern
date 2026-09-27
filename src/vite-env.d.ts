@@ -11,6 +11,8 @@ interface ImportMetaEnv {
   readonly VITE_ADMOB_IOS_REWARDED?: string;
   /** Comma-separated AdMob test device ids. */
   readonly VITE_ADMOB_TEST_DEVICES?: string;
+  /** "EEA", "US" or "OTHER": where the consent SDK should think the test devices are. */
+  readonly VITE_ADMOB_DEBUG_GEOGRAPHY?: string;
   /** "true" to show the pretend in-browser ads outside of dev builds (demos, e2e tests). */
   readonly VITE_MOCK_ADS?: string;
 }

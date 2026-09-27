@@ -1,8 +1,10 @@
 dist
+dist-e2e
 node_modules
 android
 ios
 public/data
+scripts/word-filter.json
 coverage
 playwright-report
 test-results
