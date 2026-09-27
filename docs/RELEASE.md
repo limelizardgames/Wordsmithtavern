@@ -11,7 +11,9 @@ Both are committed. Web assets are copied into them by `npx cap sync` and are gi
 
 - Node 22+
 - **Android:** Android Studio (with SDK platform 36), JDK 21
-- **iOS:** a Mac with Xcode 16 or newer, and an Apple Developer account for devices and release
+- **iOS:** a Mac with the current Xcode from the App Store (see Capacitor's
+  [environment setup](https://capacitorjs.com/docs/getting-started/environment-setup) for the
+  minimum), and an Apple Developer account for devices and release
 
 ## Everyday development
 
