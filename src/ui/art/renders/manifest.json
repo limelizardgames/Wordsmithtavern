@@ -20,6 +20,27 @@
    "y": 246.0,
    "w": 760.0,
    "h": 74.0
+  },
+  "item:lights-candles": {
+   "file": "item-lights-candles.webp",
+   "x": 83.0,
+   "y": -120.0,
+   "w": 314.0,
+   "h": 168.667
+  },
+  "item:lights-lanterns": {
+   "file": "item-lights-lanterns.webp",
+   "x": 87.0,
+   "y": -120.0,
+   "w": 306.0,
+   "h": 176.667
+  },
+  "item:lights-chandelier": {
+   "file": "item-lights-chandelier.webp",
+   "x": 58.0,
+   "y": -120.0,
+   "w": 359.0,
+   "h": 179.333
   }
  }
 }
