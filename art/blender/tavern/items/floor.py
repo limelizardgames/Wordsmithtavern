@@ -385,7 +385,7 @@ def bards_stage():
         rot=(math.pi / 2, 0, 0),
         mat=velvet,
     )
-    geo.folds(curtain, amplitude=0.06, period=0.05)
+    geo.pleat(curtain, amplitude=0.035, period=0.11, flare=0.5, seed=3)
     geo.displace(curtain, strength=0.01, size=0.2)
     geo.cylinder(
         "curtain-rod",

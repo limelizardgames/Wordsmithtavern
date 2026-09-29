@@ -41,6 +41,312 @@
    "y": -120.0,
    "w": 359.0,
    "h": 179.333
+  },
+  "item:lights-fireflies": {
+   "file": "item-lights-fireflies.webp",
+   "x": 91.333,
+   "y": -119.333,
+   "w": 297.333,
+   "h": 176.333
+  },
+  "item:lights-stars": {
+   "file": "item-lights-stars.webp",
+   "x": 80.333,
+   "y": -120.0,
+   "w": 319.333,
+   "h": 179.667
+  },
+  "item:tip-jar": {
+   "file": "item-tip-jar.webp",
+   "x": 357.0,
+   "y": 176.667,
+   "w": 90.333,
+   "h": 113.667
+  },
+  "item:crystal-ball": {
+   "file": "item-crystal-ball.webp",
+   "x": 356.333,
+   "y": 171.0,
+   "w": 95.667,
+   "h": 123.0
+  },
+  "item:brass-register": {
+   "file": "item-brass-register.webp",
+   "x": 333.333,
+   "y": 133.333,
+   "w": 161.333,
+   "h": 160.0
+  },
+  "item:enchanted-quill": {
+   "file": "item-enchanted-quill.webp",
+   "x": 339.333,
+   "y": 161.667,
+   "w": 122.333,
+   "h": 131.0
+  },
+  "item:fizzlewick-grimoire": {
+   "file": "item-fizzlewick-grimoire.webp",
+   "x": 339.0,
+   "y": 237.0,
+   "w": 124.667,
+   "h": 65.0
+  },
+  "item:royal-seal": {
+   "file": "item-royal-seal.webp",
+   "x": 342.0,
+   "y": 161.0,
+   "w": 115.0,
+   "h": 117.333
+  },
+  "item:cat-basket": {
+   "file": "item-cat-basket.webp",
+   "x": 94.0,
+   "y": 192.667,
+   "w": 110.667,
+   "h": 64.333
+  },
+  "item:potted-fern": {
+   "file": "item-potted-fern.webp",
+   "x": 76.667,
+   "y": 167.0,
+   "w": 156.333,
+   "h": 88.333
+  },
+  "item:hatchling-nest": {
+   "file": "item-hatchling-nest.webp",
+   "x": 101.667,
+   "y": 181.0,
+   "w": 99.0,
+   "h": 78.0
+  },
+  "item:oakley-sapling": {
+   "file": "item-oakley-sapling.webp",
+   "x": 100.333,
+   "y": 96.667,
+   "w": 108.0,
+   "h": 161.333
+  },
+  "item:table-wobbly": {
+   "file": "item-table-wobbly.webp",
+   "x": 308.333,
+   "y": 118.667,
+   "w": 231.0,
+   "h": 138.333
+  },
+  "item:table-oak": {
+   "file": "item-table-oak.webp",
+   "x": 328.0,
+   "y": 92.333,
+   "w": 190.333,
+   "h": 173.333
+  },
+  "item:armchair": {
+   "file": "item-armchair.webp",
+   "x": 353.0,
+   "y": 86.0,
+   "w": 149.333,
+   "h": 172.333
+  },
+  "item:bard-stage": {
+   "file": "item-bard-stage.webp",
+   "x": 292.667,
+   "y": 85.667,
+   "w": 244.667,
+   "h": 168.333
+  },
+  "item:reading-nook": {
+   "file": "item-reading-nook.webp",
+   "x": 342.667,
+   "y": 76.333,
+   "w": 172.333,
+   "h": 181.667
+  },
+  "item:hearth-sooty": {
+   "file": "item-hearth-sooty.webp",
+   "x": -43.333,
+   "y": -88.333,
+   "w": 245.0,
+   "h": 344.0
+  },
+  "item:hearth-stone": {
+   "file": "item-hearth-stone.webp",
+   "x": -43.333,
+   "y": -88.333,
+   "w": 255.333,
+   "h": 344.0
+  },
+  "item:hearth-grand": {
+   "file": "item-hearth-grand.webp",
+   "x": -49.333,
+   "y": -88.333,
+   "w": 267.333,
+   "h": 334.333
+  },
+  "item:hearth-dragon": {
+   "file": "item-hearth-dragon.webp",
+   "x": -49.0,
+   "y": -88.333,
+   "w": 256.0,
+   "h": 344.0
+  },
+  "item:wall-shield": {
+   "file": "item-wall-shield.webp",
+   "x": 32.333,
+   "y": -0.333,
+   "w": 104.333,
+   "h": 101.667
+  },
+  "item:notice-board": {
+   "file": "item-notice-board.webp",
+   "x": 15.667,
+   "y": -4.333,
+   "w": 137.333,
+   "h": 108.667
+  },
+  "item:mounted-antlers": {
+   "file": "item-mounted-antlers.webp",
+   "x": 44.333,
+   "y": 3.667,
+   "w": 80.0,
+   "h": 79.333
+  },
+  "item:legendary-tankard": {
+   "file": "item-legendary-tankard.webp",
+   "x": 36.0,
+   "y": 18.0,
+   "w": 92.333,
+   "h": 82.0
+  },
+  "item:ships-wheel": {
+   "file": "item-ships-wheel.webp",
+   "x": 25.0,
+   "y": -6.0,
+   "w": 118.333,
+   "h": 114.333
+  },
+  "item:painting-goose": {
+   "file": "item-painting-goose.webp",
+   "x": 338.333,
+   "y": -15.667,
+   "w": 129.667,
+   "h": 125.0
+  },
+  "item:tapestry": {
+   "file": "item-tapestry.webp",
+   "x": 334.667,
+   "y": -6.0,
+   "w": 137.0,
+   "h": 134.0
+  },
+  "item:ship-bottle": {
+   "file": "item-ship-bottle.webp",
+   "x": 353.333,
+   "y": 35.667,
+   "w": 104.667,
+   "h": 64.667
+  },
+  "item:holy-grill": {
+   "file": "item-holy-grill.webp",
+   "x": 352.333,
+   "y": 8.333,
+   "w": 101.667,
+   "h": 99.333
+  },
+  "item:golden-lute": {
+   "file": "item-golden-lute.webp",
+   "x": 368.333,
+   "y": -3.667,
+   "w": 67.0,
+   "h": 100.0
+  },
+  "item:window-dusty": {
+   "file": "item-window-dusty.webp",
+   "x": 182.667,
+   "y": 4.667,
+   "w": 114.667,
+   "h": 122.0
+  },
+  "item:window-flowers": {
+   "file": "item-window-flowers.webp",
+   "x": 178.0,
+   "y": 4.667,
+   "w": 124.0,
+   "h": 125.667
+  },
+  "item:window-stained": {
+   "file": "item-window-stained.webp",
+   "x": 182.667,
+   "y": 4.667,
+   "w": 114.667,
+   "h": 121.667
+  },
+  "barley:neutral": {
+   "file": "barley-neutral.webp",
+   "x": 0.667,
+   "y": 183.0,
+   "w": 112.667,
+   "h": 110.0
+  },
+  "barley:happy": {
+   "file": "barley-happy.webp",
+   "x": 0.667,
+   "y": 183.0,
+   "w": 112.667,
+   "h": 110.0
+  },
+  "barley:grumpy": {
+   "file": "barley-grumpy.webp",
+   "x": 0.667,
+   "y": 183.0,
+   "w": 112.667,
+   "h": 110.0
+  },
+  "barley:surprised": {
+   "file": "barley-surprised.webp",
+   "x": 0.667,
+   "y": 183.0,
+   "w": 112.667,
+   "h": 110.0
+  },
+  "barley:sad": {
+   "file": "barley-sad.webp",
+   "x": 0.667,
+   "y": 183.0,
+   "w": 112.667,
+   "h": 110.0
   }
+ },
+ "portraits": {
+  "barley:neutral": {
+   "file": "barley-portrait-neutral.webp"
+  },
+  "barley:happy": {
+   "file": "barley-portrait-happy.webp"
+  },
+  "barley:grumpy": {
+   "file": "barley-portrait-grumpy.webp"
+  },
+  "barley:surprised": {
+   "file": "barley-portrait-surprised.webp"
+  },
+  "barley:sad": {
+   "file": "barley-portrait-sad.webp"
+  }
+ },
+ "fx": {
+  "fire": [
+   88.96,
+   189.29
+  ],
+  "lamps": [
+   [
+    112.17,
+    29.0
+   ],
+   [
+    367.83,
+    29.0
+   ]
+  ]
  }
 }

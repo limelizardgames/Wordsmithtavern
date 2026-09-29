@@ -320,3 +320,25 @@ def folds(ob, amplitude=0.03, period=0.12, irregular=0.4):
     m.mid_level = 0.5
     m.texture_coords = "LOCAL"
     return m
+
+
+def pleat(ob, amplitude=0.04, period=0.12, flare=0.6, seed=0):
+    """Hanging-cloth folds, written straight into a grid's vertices (local X across, Y down the
+    drop, Z out of the cloth). Folds deepen towards the hem by `flare`."""
+    rnd = random.Random(seed)
+    phases = [rnd.uniform(0, 2 * math.pi) for _ in range(3)]
+    me = ob.data
+    ys = [v.co.y for v in me.vertices]
+    top, bottom = max(ys), min(ys)
+    span = max(top - bottom, 1e-6)
+    for v in me.vertices:
+        x, y = v.co.x, v.co.y
+        drop = (top - y) / span
+        wobble = 0.35 * math.sin(2 * math.pi * x / (period * 3.1) + phases[0])
+        a = amplitude * (1.0 - flare + flare * drop)
+        v.co.z += a * (
+            math.sin(2 * math.pi * x / period + phases[1] + wobble)
+            + 0.3 * math.sin(2 * math.pi * x / (period * 0.47) + phases[2])
+        )
+    me.update()
+    return ob

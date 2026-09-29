@@ -10,6 +10,8 @@ from __future__ import annotations
 import math
 import random
 
+from mathutils import Vector
+
 from . import core, geo
 from . import materials as M
 
@@ -338,6 +340,117 @@ def build_counter():
     return edge
 
 
+def barrel(center, r=0.26, h=0.72, lying=False, name="barrel"):
+    """A coopered barrel standing (or lying) with iron hoops."""
+    from .barley import stave_wood
+    from .items.common import iron
+
+    prof = [
+        (0.0, 0.0),
+        (r * 0.86, 0.0),
+        (r * 0.95, h * 0.15),
+        (r, h * 0.5),
+        (r * 0.95, h * 0.85),
+        (r * 0.86, h),
+        (r * 0.8, h - 0.01),
+        (0.0, h - 0.02),
+    ]
+    rot = (0, math.pi / 2, 0) if lying else (0, 0, 0)
+    parts = [geo.lathe(name, prof, center, rot=rot, segments=48, mat=stave_wood())]
+    for t in (0.1, 0.28, 0.72, 0.9):
+        rr = r * (0.9 + 0.1 * math.sin(math.pi * t)) + 0.004
+        parts.append(
+            geo.lathe(
+                f"{name}-hoop",
+                [
+                    (rr - 0.003, h * t - 0.018),
+                    (rr + 0.002, h * t - 0.012),
+                    (rr + 0.002, h * t + 0.012),
+                    (rr - 0.003, h * t + 0.018),
+                ],
+                center,
+                rot=rot,
+                segments=48,
+                mat=iron(),
+            )
+        )
+    return parts
+
+
+def herb_bundle(top, seed):
+    rnd = random.Random(seed)
+    dried = M.matte("dried-herbs", (0.16, 0.14, 0.06), rough=0.9, bump=0.5, bump_scale=300)
+    string = M.matte("string", (0.35, 0.28, 0.18), rough=0.9)
+    tie = top + Vector((0, 0, -0.1))
+    geo.tube("herb-string", [top, tie], 0.002, mat=string, kind="POLY", resolution=2)
+    for _ in range(18):
+        a = rnd.uniform(0, 2 * math.pi)
+        spread = rnd.uniform(0.02, 0.07)
+        end = tie + Vector((math.cos(a) * spread, math.sin(a) * spread * 0.6, -rnd.uniform(0.2, 0.3)))
+        geo.tube("herb-stem", [tie, tie.lerp(end, 0.5) + Vector((0, 0, 0.01)), end], 0.0018, mat=dried, resolution=1)
+        for t in (0.55, 0.75, 0.95):
+            q = tie.lerp(end, t)
+            geo.lathe(
+                "herb-leaves", [(0.0, -0.012), (0.009, -0.004), (0.006, 0.006), (0.0, 0.01)], q, segments=6, mat=dried
+            )
+
+
+def build_props():
+    """Permanent clutter in the outer bays, only seen on wide screens (outside every slot)."""
+    y = WALL - 0.36
+    barrel(Vector((-3.7, y, 0.0)))
+    barrel(Vector((-3.12, y + 0.05, 0.0)), r=0.24, h=0.68)
+    barrel(Vector((-3.72, y + 0.02, 0.72)), r=0.17, h=0.44, lying=True, name="keg")
+    oak = oak_panel()
+    sx, sw = 3.3, 0.9
+    geo.box("sideboard", (sw, 0.42, 0.86), Vector((sx, WALL - 0.24, 0.43)), mat=oak, bev=0.01)
+    geo.box("sideboard-top", (sw + 0.06, 0.46, 0.04), Vector((sx, WALL - 0.24, 0.88)), mat=oak, bev=0.006)
+    for k in range(2):
+        geo.box(
+            "sideboard-door",
+            (0.02, 0.4, 0.62),
+            Vector((sx - 0.21 + k * 0.42, WALL - 0.46, 0.45)),
+            rot=(0, 0, math.pi / 2),
+            mat=M.wood("door-panel", (0.03, 0.018, 0.01), (0.09, 0.055, 0.03), grain=50),
+            bev=0.004,
+        )
+    top = 0.9
+    glass_brown = M.glass("bottle-brown", (0.45, 0.25, 0.1), rough=0.05)
+    glass_green = M.glass("bottle-green", (0.3, 0.5, 0.25), rough=0.05)
+    for k, (dx, g) in enumerate(((-0.34, glass_green), (-0.26, glass_brown), (-0.18, glass_green))):
+        h = 0.26 + 0.03 * k
+        geo.lathe(
+            "bottle",
+            [(0.0, 0.0), (0.035, 0.0), (0.037, h * 0.62), (0.014, h * 0.82), (0.012, h), (0.0, h)],
+            Vector((sx + dx, WALL - 0.2, top)),
+            segments=28,
+            mat=g,
+        )
+    stone = M.matte("stoneware-jug", (0.42, 0.34, 0.24), rough=0.35)
+    for k, dx in enumerate((0.05, 0.22)):
+        s_ = 1.0 - 0.2 * k
+        geo.lathe(
+            "jug",
+            [
+                (0.0, 0.0),
+                (0.06 * s_, 0.0),
+                (0.08 * s_, 0.08 * s_),
+                (0.07 * s_, 0.17 * s_),
+                (0.035 * s_, 0.22 * s_),
+                (0.038 * s_, 0.25 * s_),
+                (0.0, 0.25 * s_),
+            ],
+            Vector((sx + dx, WALL - 0.22, top)),
+            segments=32,
+            mat=stone,
+        )
+    from .items.floor import tankard
+
+    tankard(Vector((sx + 0.36, WALL - 0.3, top)))
+    for k, x in enumerate((-3.95, -3.5, 3.05, 3.6)):
+        herb_bundle(Vector((x, WALL - 0.1, 1.98)), seed=k)
+
+
 def build():
     build_wall()
     build_timbers()
@@ -346,4 +459,5 @@ def build():
     build_ceiling()
     build_sides()
     build_sky()
+    build_props()
     build_counter()

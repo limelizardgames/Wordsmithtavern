@@ -88,15 +88,33 @@ def tip_jar():
         )
 
 
-def mist_volume():
-    n = M.N("scrying-mist")
-    g = n.coord("Object")
-    swirl = n.noise(g, scale=18.0, detail=5.0, rough=0.6, distortion=3.0).outputs["Fac"]
-    r = n.vmath("LENGTH", g)
-    shape = n.math("MULTIPLY", n.maprange(swirl, 0.45, 0.7, 0.0, 1.0), n.maprange(r, 0.02, 0.07, 1.0, 0.0))
-    col = n.ramp(swirl, [(0.4, (0.3, 0.2, 1.0)), (0.7, (0.75, 0.5, 1.0))])
-    em = n.emission(col, n.math("MULTIPLY", shape, 6.0))
-    return n.finish(n.node("ShaderNodeBsdfTransparent").outputs[0], volume=em)
+def mist_shell(seed: int, strength: float = 3.0):
+    """Swirling scrying mist on a shell: glowing where the swirl is, transparent elsewhere.
+    Partly opaque where it glows, so the glow survives straight-alpha export."""
+    n = M.N(f"scrying-mist-{seed}")
+    co = n.vmath("ADD", n.coord("Object"), (seed * 1.7, seed * 0.3, seed * 2.9))
+    swirl = n.noise(co, scale=26.0, detail=5.0, rough=0.6, distortion=4.0).outputs["Fac"]
+    mask = n.maprange(swirl, 0.5, 0.72, 0.0, 0.8)
+    col = n.ramp(swirl, [(0.5, (0.35, 0.22, 1.0)), (0.75, (0.85, 0.62, 1.0))])
+    return n.finish(n.shader_mix(mask, n.node("ShaderNodeBsdfTransparent").outputs[0], n.emission(col, strength)))
+
+
+def soft_glow(name: str, color, strength: float, opacity: float):
+    n = M.N(name)
+    lw = n.node("ShaderNodeLayerWeight", {"Blend": 0.5})
+    centre = n.math("SUBTRACT", 1.0, lw.outputs["Facing"])
+    mask = n.math("MULTIPLY", n.math("POWER", centre, 2.0), opacity)
+    return n.finish(n.shader_mix(mask, n.node("ShaderNodeBsdfTransparent").outputs[0], n.emission(color, strength)))
+
+
+def sphere(name, center, r, mat, segments=32):
+    rings = 16
+    prof = (
+        [(0.0, -r)]
+        + [(r * math.sin(math.pi * k / rings), -r * math.cos(math.pi * k / rings)) for k in range(1, rings)]
+        + [(0.0, r)]
+    )
+    return geo.lathe(name, prof, center, segments=segments, mat=mat)
 
 
 @item("crystal-ball", "counter")
@@ -144,23 +162,18 @@ def crystal_ball():
         segments=64,
         mat=M.glass("crystal", (0.95, 0.95, 1.0), rough=0.0),
     )
-    mist = geo.lathe(
-        "mist",
-        [(0.0, -0.06)]
-        + [(0.06 * math.sin(math.pi * k / 16), -0.06 * math.cos(math.pi * k / 16)) for k in range(1, 16)]
-        + [(0.0, 0.06)],
-        ball_c,
-        segments=32,
-        mat=mist_volume(),
-    )
-    common.no_room_light(mist)
+    for k, r in enumerate((0.03, 0.045, 0.06)):
+        shell = sphere(f"mist-{k}", ball_c, r, mist_shell(k))
+        shell.rotation_euler = (0.4 * k, 0.9 * k, 0.3 * k)
+        common.no_room_light(shell)
+    common.no_room_light(sphere("mist-core", ball_c, 0.022, soft_glow("mist-core", (0.7, 0.5, 1.0), 4.0, 0.6)))
     common.own_light("ball-glow", ball_c + Vector((0, -0.12, 0.02)), 0.6, (0.55, 0.4, 1.0), radius=0.05)
 
 
 @item("brass-register", "counter")
 def brass_register():
     c = C + Vector((0.01, 0.03, TOP - C.z))
-    brass = M.metal("register-brass", (0.72, 0.5, 0.2), rough=(0.18, 0.4), tarnish=(0.18, 0.12, 0.05), scale=60)
+    brass = M.metal("register-brass", (0.5, 0.34, 0.13), rough=(0.3, 0.55), tarnish=(0.1, 0.07, 0.03), scale=60)
     wood = M.wood("drawer-wood", (0.025, 0.013, 0.007), (0.07, 0.038, 0.02), grain=90, varnish=0.5)
     geo.box("register-drawer", (0.24, 0.2, 0.05), c + Vector((0, 0, 0.025)), mat=wood, bev=0.004)
     body = geo.box("register-body", (0.22, 0.17, 0.13), c + Vector((0, 0.01, 0.115)), mat=brass, bev=0.008, segments=3)

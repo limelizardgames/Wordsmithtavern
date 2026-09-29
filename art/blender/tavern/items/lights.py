@@ -12,6 +12,7 @@ from mathutils import Vector
 from .. import core, geo, lighting, slots
 from .. import materials as M
 from . import common, item
+from .counter import soft_glow, sphere
 
 CEIL_PLASTER = slots.CEILING + 0.18
 
@@ -213,7 +214,7 @@ def firefly_jars():
     glass = M.glass("jar-glass", (0.9, 0.95, 0.9), rough=0.03)
     cloth = M.fabric("jar-cloth", (0.35, 0.28, 0.18), sheen=0.3, weave=900)
     twine = M.matte("twine", (0.3, 0.22, 0.13), rough=0.9, bump=0.5, bump_scale=300)
-    bug = M.glow("firefly", (0.6, 1.0, 0.2), 25.0)
+    bug = M.glow("firefly", (0.75, 1.0, 0.25), 9.0)
     for f, lamp in enumerate(slots.LAMPS):
         rnd = random.Random(70 + f)
         base = Vector((lamp.x, lamp.y, lamp.z - 0.13))
@@ -240,9 +241,11 @@ def firefly_jars():
             a, rr, z = rnd.uniform(0, 6.28), rnd.uniform(0.0, 0.05), rnd.uniform(0.02, 0.15)
             p = base + Vector((math.cos(a) * rr, math.sin(a) * rr, z))
             common.no_room_light(
-                geo.lathe("firefly", [(0.0, -0.004), (0.004, 0.0), (0.0, 0.004)], p, segments=8, mat=bug)
+                geo.lathe("firefly", [(0.0, -0.0065), (0.0065, 0.0), (0.0, 0.0065)], p, segments=10, mat=bug)
             )
         common.own_light(f"jar-{f}", base + Vector((0, 0, 0.09)), 0.5, (0.6, 1.0, 0.3), radius=0.05)
+        haze = soft_glow("firefly-haze", (0.7, 1.0, 0.3), 1.6, 0.35)
+        common.no_room_light(sphere(f"jar-haze-{f}", base + Vector((0, 0, 0.09)), 0.058, haze))
         geo.tube(
             "rope",
             [
