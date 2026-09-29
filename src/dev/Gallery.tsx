@@ -4,7 +4,7 @@ import { Portrait } from '../ui/art/Portrait';
 import { TavernScene } from '../ui/art/TavernScene';
 import { Icon, IngredientIcon, RecipeIcon } from '../ui/art/Icons';
 import { Barley } from '../ui/art/Barley';
-import { SceneDefs } from '../ui/art/FurnitureArt';
+import { SceneDefs } from '../ui/art/SceneDefs';
 import type { FurnitureSlot } from '../game/types';
 
 const SETS: Array<Partial<Record<FurnitureSlot, string>>> = [

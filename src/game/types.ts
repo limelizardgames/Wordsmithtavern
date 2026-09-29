@@ -168,6 +168,8 @@ export type OutfitStyle =
   'tunic' | 'robe' | 'armor' | 'apron' | 'vest' | 'coat' | 'suit' | 'shawl' | 'bark';
 
 export interface PortraitSpec {
+  /** Key of a rendered portrait (see src/ui/art/renders.ts); filled in by buildContent. */
+  art?: string;
   species: Species;
   skin: string;
   outfit: string;

@@ -1,5 +1,5 @@
 import { bootError, screen } from './state';
-import { SceneDefs } from '../ui/art/FurnitureArt';
+import { SceneDefs } from '../ui/art/SceneDefs';
 import { DialogueOverlay } from '../ui/overlays/Dialogue';
 import { ModalHost } from '../ui/overlays/Modals';
 import { MockAdOverlay, MockBanner } from '../ui/overlays/MockAds';

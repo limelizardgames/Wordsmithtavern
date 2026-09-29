@@ -1,0 +1,8 @@
+# Python 3.11. Install into a virtual environment:
+#   python3.11 -m venv .venv && .venv/bin/pip install -r art/blender/requirements.txt
+bpy==5.0.1
+numpy
+pillow
+cairosvg
+fonttools
+brotli

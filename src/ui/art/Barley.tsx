@@ -1,5 +1,6 @@
 import type { Mood } from '../../game/types';
 import { INK } from './color';
+import { barleyPortrait } from './renders';
 
 const S = {
   stroke: INK,
@@ -153,8 +154,9 @@ export function BarleyGraphic({
   );
 }
 
+/** Barley as a rendered portrait (falls back to the drawing if the renders are missing). */
 export function Barley({
-  mood,
+  mood = 'neutral',
   talking,
   class: className,
 }: {
@@ -162,9 +164,20 @@ export function Barley({
   talking?: boolean;
   class?: string;
 }) {
+  const src = barleyPortrait(mood);
+  if (!src) {
+    return (
+      <svg class={className} viewBox="0 0 64 72" aria-hidden="true">
+        <BarleyGraphic mood={mood} talking={talking} />
+      </svg>
+    );
+  }
   return (
-    <svg class={className} viewBox="0 0 64 72" aria-hidden="true">
-      <BarleyGraphic mood={mood} talking={talking} />
-    </svg>
+    <span
+      class={['barley-photo', talking && 'is-talking', className].filter(Boolean).join(' ')}
+      aria-hidden="true"
+    >
+      <img src={src} alt="" draggable={false} />
+    </span>
   );
 }

@@ -17,12 +17,24 @@ export interface GameContent {
   newGame: NewGameContent;
 }
 
+/** Give every portrait the key its rendered art is filed under (guest:<id>, townsfolk:<id>:<n>). */
+function withArtKeys(guests: GuestDef[], townsfolk: TownsfolkDef[]) {
+  return {
+    guests: guests.map((g) => ({ ...g, portrait: { art: `guest:${g.id}`, ...g.portrait } })),
+    townsfolk: townsfolk.map((t) => ({
+      ...t,
+      looks: t.looks.map((l, i) => ({ art: `townsfolk:${t.id}:${i}`, ...l })),
+    })),
+  };
+}
+
 export function buildContent(
   recipes: RecipeDef[] = RECIPES,
   furniture: FurnitureDef[] = FURNITURE,
-  guests: GuestDef[] = GUESTS,
-  townsfolk: TownsfolkDef[] = TOWNSFOLK,
+  guestDefs: GuestDef[] = GUESTS,
+  townsfolkDefs: TownsfolkDef[] = TOWNSFOLK,
 ): GameContent {
+  const { guests, townsfolk } = withArtKeys(guestDefs, townsfolkDefs);
   return {
     recipes: new Map(recipes.map((r) => [r.id, r])),
     furniture: new Map(furniture.map((f) => [f.id, f])),

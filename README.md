@@ -36,8 +36,10 @@ nights.
   during your first nights, and never right after you chose to watch an ad. Banners stay on menu
   screens, away from the letter wheel. See [docs/MONETIZATION.md](docs/MONETIZATION.md).
 
-All art is hand-written SVG and all audio is synthesised at runtime, so there are no image or sound
-files to license.
+The tavern, its furniture and Barley are path-traced 3D renders built entirely in code (Blender's
+Python module, procedural materials; see [art/README.md](art/README.md)). Icons and the interface
+are SVG, and all audio is synthesised at runtime, so there are no image, model or sound files to
+license.
 
 ## Quick start
 
@@ -75,7 +77,8 @@ src/
                nights and stories, saves, shop. No DOM; fully unit-tested.
   content/     Recipes, furniture, guests and their stories, townsfolk, Barley's lines.
   app/         Signals-based state, the night/service flow, boot and actions.
-  ui/          Preact screens, the letter wheel, overlays, and all SVG art.
+  ui/          Preact screens, the letter wheel, overlays, SVG icons, and the rendered tavern
+               layers (ui/art/renders/).
   services/    AdMob and pretend ads, audio synthesis, haptics, storage, platform hooks.
   config/      Ad unit configuration (read from env variables) and app version.
 public/data/   Generated word lists (see scripts/build-dictionary.mjs).
@@ -83,6 +86,7 @@ scripts/       Dictionary builder and app icon/splash renderer.
 tests/         Vitest unit tests.   e2e/  Playwright tests (phone and tablet).
 android/ ios/  Capacitor native projects.
 docs/          Design, monetization and release guides.
+art/           The 3D tavern: Blender scripts that render the room, furniture and Barley.
 ```
 
 ## Scripts

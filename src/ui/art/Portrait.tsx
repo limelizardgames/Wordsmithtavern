@@ -1,6 +1,7 @@
 import type { JSX } from 'preact';
 import type { Mood, PortraitSpec } from '../../game/types';
 import { INK, shade } from './color';
+import { portraitImage } from './renders';
 import './portrait.css';
 
 interface PortraitProps {
@@ -1117,6 +1118,24 @@ export function PortraitGraphic({ spec, mood = 'neutral', talking, silhouette }:
   const classes = ['portrait', talking && 'is-talking', silhouette && 'is-silhouette']
     .filter(Boolean)
     .join(' ');
+  const photo = portraitImage(spec.art, mood);
+  if (photo) {
+    // Rendered portraits share the drawing's 100 x 124 box, bottom-aligned.
+    return (
+      <g class={`${classes} is-photo`}>
+        <g class="portrait-bob">
+          <image
+            href={photo}
+            x="0"
+            y="-14"
+            width="100"
+            height="124"
+            preserveAspectRatio="xMidYMax meet"
+          />
+        </g>
+      </g>
+    );
+  }
   return (
     <g class={classes}>
       <g class="portrait-bob">

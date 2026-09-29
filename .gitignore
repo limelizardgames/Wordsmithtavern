@@ -21,3 +21,8 @@ coverage/
 .vscode/*
 !.vscode/extensions.json
 *.swp
+
+# Blender art pipeline scratch (textures cache, intermediate PNGs)
+art/blender/.cache/
+src/ui/art/renders/.tmp/
+__pycache__/

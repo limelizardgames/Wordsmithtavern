@@ -17,6 +17,7 @@ import {
   setupNativeChrome,
 } from '../services/platform';
 import { deleteSave, flushSave, readSave, scheduleSave } from '../services/storage';
+import { preloadTavern } from '../ui/art/renders';
 import { openTavern } from './service';
 import {
   advanceDialogue,
@@ -85,6 +86,7 @@ export async function boot() {
     return;
   }
   void initAds();
+  await preloadTavern(save.value.furniture.placed);
   screen.value = 'title';
   await hideSplash();
 }

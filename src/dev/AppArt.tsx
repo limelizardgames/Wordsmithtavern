@@ -1,4 +1,5 @@
 import { BarleyGraphic } from '../ui/art/Barley';
+import { barleyPortrait } from '../ui/art/renders';
 import { Sign } from '../ui/art/Sign';
 
 /**
@@ -26,6 +27,12 @@ function Background() {
 }
 
 function Mascot({ scale = 1 }: { scale?: number }) {
+  const photo = barleyPortrait('happy');
+  if (photo) {
+    // The rendered portrait is square, with Barley filling most of it.
+    const size = 820 * scale;
+    return <image href={photo} x={512 - size / 2} y={530 - size / 2} width={size} height={size} />;
+  }
   // Barley is drawn in a 64 x 72 box; centre him on the canvas.
   const s = 8.6 * scale;
   return (

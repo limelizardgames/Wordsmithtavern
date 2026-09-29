@@ -59,218 +59,87 @@
   }
 }
 
-/* ── Ambient life ──────────────────────────────────────────────────────── */
-.flame {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: flame-flicker 0.9s ease-in-out infinite alternate;
-}
-
-g:nth-child(even) > .flame {
-  animation-duration: 0.73s;
-  animation-delay: -0.3s;
-}
-
-@keyframes flame-flicker {
-  0% {
-    transform: scale(1, 1) skewX(0deg);
-  }
-  35% {
-    transform: scale(0.94, 1.08) skewX(3deg);
-  }
-  70% {
-    transform: scale(1.05, 0.95) skewX(-2deg);
-  }
-  100% {
-    transform: scale(0.97, 1.04) skewX(1deg);
-  }
-}
-
-.glow-pulse {
-  animation: glow-pulse 2.8s ease-in-out infinite;
-}
-
-@keyframes glow-pulse {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.62;
-  }
-}
-
-.sparkle > * {
-  animation: sparkle 2.2s ease-in-out infinite;
+/* ── Living light over the still render ─────────────────────────────────── */
+.light-play circle {
+  mix-blend-mode: screen;
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.sparkle > :nth-child(2) {
-  animation-delay: 0.7s;
+.fire-flicker {
+  animation: fire-flicker 2.3s ease-in-out infinite alternate;
 }
 
-.sparkle > :nth-child(3) {
-  animation-delay: 1.4s;
+.fire-flicker.is-slow {
+  animation-duration: 3.7s;
+  animation-delay: -1.2s;
 }
 
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: scale(0.6);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-.steam > * {
-  animation: steam 3s ease-out infinite;
-  transform-box: fill-box;
-}
-
-.steam > :nth-child(2) {
-  animation-delay: 1.5s;
-}
-
-@keyframes steam {
+@keyframes fire-flicker {
   0% {
-    transform: translateY(0) scale(0.8);
-    opacity: 0;
+    opacity: 0.55;
+    transform: scale(0.97);
   }
-  30% {
-    opacity: 0.5;
+  22% {
+    opacity: 0.85;
+  }
+  41% {
+    opacity: 0.62;
+    transform: scale(1.03);
+  }
+  63% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.7;
+    transform: scale(0.99);
   }
   100% {
-    transform: translateY(-22px) scale(1.8);
-    opacity: 0;
+    opacity: 0.88;
+    transform: scale(1.02);
   }
 }
 
-.fireflies > * {
-  animation: firefly 3.2s ease-in-out infinite alternate;
-  transform-box: fill-box;
+.lamp-flicker {
+  animation: lamp-flicker 3.1s ease-in-out infinite alternate;
 }
 
-.fireflies > :nth-child(2) {
+.lamp-flicker.is-offset {
   animation-duration: 2.6s;
-  animation-delay: -1s;
+  animation-delay: -1.4s;
 }
 
-.fireflies > :nth-child(3) {
-  animation-duration: 3.8s;
-  animation-delay: -2s;
-}
-
-.fireflies > :nth-child(4) {
-  animation-duration: 2.2s;
-}
-
-@keyframes firefly {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(3px, -4px);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-3px, 3px);
-    opacity: 0.6;
-  }
-}
-
-.cat-breathe {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: breathe 3.4s ease-in-out infinite;
-}
-
-@keyframes breathe {
+@keyframes lamp-flicker {
   0%,
   100% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(1.02, 1.05);
-  }
-}
-
-.zzz {
-  animation: zzz 3.4s ease-out infinite;
-}
-
-@keyframes zzz {
-  0% {
-    transform: translate(0, 4px);
-    opacity: 0;
+    opacity: 0.7;
   }
   30% {
     opacity: 0.9;
   }
-  100% {
-    transform: translate(6px, -12px);
-    opacity: 0;
+  55% {
+    opacity: 0.65;
+  }
+  75% {
+    opacity: 0.85;
   }
 }
 
-.sway {
+/* ── Barley on the bar ─────────────────────────────────────────────────── */
+.scene-barley image {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: sway 5s ease-in-out infinite;
+  animation: barley-bob 3s ease-in-out infinite;
 }
 
-@keyframes sway {
-  0%,
-  100% {
-    transform: rotate(-2deg);
-  }
-  50% {
-    transform: rotate(2deg);
-  }
+.scene-barley.is-talking image {
+  animation: barley-hop 0.42s ease-in-out infinite;
 }
 
-.float {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.twinkle {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: twinkle 3s ease-in-out infinite;
-}
-
-@keyframes twinkle {
-  0%,
-  100% {
-    transform: rotate(-6deg) scale(1);
-  }
-  50% {
-    transform: rotate(6deg) scale(1.06);
-  }
-}
-
-.swirl {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: swirl 6s linear infinite;
-}
-
-@keyframes swirl {
-  to {
-    transform: rotate(360deg);
+@media (prefers-reduced-motion: reduce) {
+  .fire-flicker,
+  .lamp-flicker,
+  .scene-barley image {
+    animation: none;
   }
 }

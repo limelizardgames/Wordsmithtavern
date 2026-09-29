@@ -145,7 +145,10 @@ function CreditsModal() {
           Fonts: <strong>Fredoka</strong>, <strong>Almendra</strong> and{' '}
           <strong>Uncial Antiqua</strong>, SIL Open Font License.
         </p>
-        <p>Built with Preact and Capacitor. All art and sound are generated in code.</p>
+        <p>
+          Built with Preact and Capacitor. The tavern is rendered with Blender from code; all art
+          and sound are generated, not licensed.
+        </p>
         <p class="muted">Barley would like it noted that he did most of the work.</p>
       </div>
       <div class="modal-actions">
