@@ -109,9 +109,15 @@ The same build plays in any browser and needs no store review. The web version s
 (AdMob only runs in the Android and iOS apps).
 
 - **GitHub Pages:** `.github/workflows/deploy-web.yml` builds and publishes the game on every push
-  to `main` (or this branch). One-time setup: repository Settings -> Pages -> Source: "GitHub
-  Actions". The game then lives at `https://<owner>.github.io/<repo>/`. On a free GitHub plan the
-  repository must be public for Pages to work.
+  to `main` (or this branch) at **https://wordsmithtavern.limelizardgames.com**. One-time setup:
+  1. Repository Settings -> Pages -> Source: "GitHub Actions". On a free GitHub plan the
+     repository must be public.
+  2. At your DNS provider for limelizardgames.com, add a `CNAME` record: name `wordsmithtavern`,
+     target `limelizardgames.github.io` (if the provider proxies traffic, such as Cloudflare's
+     orange cloud, set it to "DNS only" until the certificate is issued).
+  3. Settings -> Pages -> Custom domain: `wordsmithtavern.limelizardgames.com`, Save, wait for the
+     DNS check to pass, then tick "Enforce HTTPS".
+     `public/CNAME` carries the same domain for hosts that read it.
 - **Any static host** (Netlify, Cloudflare Pages, itch.io as an HTML5 game): run `npm run build`
   and upload the contents of `dist/`. Asset paths are relative, so it works from any folder.
 

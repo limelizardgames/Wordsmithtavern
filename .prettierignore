@@ -12,3 +12,4 @@ package-lock.json
 licenses
 src/ui/art/renders
 art/blender/.cache
+public/CNAME
