@@ -103,6 +103,18 @@ npx @capacitor/assets generate --ios --android \
 4. TestFlight first: check the ATT prompt, the consent form, rewarded ads and the banner position
    on a notched iPhone and an iPad in both orientations.
 
+## Web release
+
+The same build plays in any browser and needs no store review. The web version shows no ads
+(AdMob only runs in the Android and iOS apps).
+
+- **GitHub Pages:** `.github/workflows/deploy-web.yml` builds and publishes the game on every push
+  to `main` (or this branch). One-time setup: repository Settings -> Pages -> Source: "GitHub
+  Actions". The game then lives at `https://<owner>.github.io/<repo>/`. On a free GitHub plan the
+  repository must be public for Pages to work.
+- **Any static host** (Netlify, Cloudflare Pages, itch.io as an HTML5 game): run `npm run build`
+  and upload the contents of `dist/`. Asset paths are relative, so it works from any folder.
+
 ## Pre-launch checklist
 
 - [ ] `npm run typecheck && npm test && npm run test:e2e` pass
